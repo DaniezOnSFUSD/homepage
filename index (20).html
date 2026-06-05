@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DaniezOnSFUSD | Community Homepage</title>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/204815157?v=4" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="DaniezOnSFUSD | The Ultimate Chromebook Hub">
+    <meta property="og:description" content="Launch NautilusOS, play Eaglercraft 1.20, or browse 45+ unblocked games. Features a built-in Stealth Mode [ to toggle educational research presets instantly]">
+    <meta property="og:url" content="https://daniezonsfusd.github.io/homepage/">
+    <meta property="og:image" content="https://daniezonsfusd.github.io/homepage/assets/NautilusOS.png">
+    <meta name="theme-color" content="#7289da">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="DaniezOnSFUSD Hub">
+    <meta name="twitter:description" content="High-performance games and OS environments for SFUSD Chromebooks. Optimized, fast, and stealthy.">
+    
+    <style>
+        :root {
+            --primary: #7289da; --bg: #0f1115; --nav-bg: #1a1c22; --card-bg: #1a1c22;
+            --text: #e0e0e0; --secondary-text: #a0a0a0; --border: rgba(255, 255, 255, 0.08);
+            --amethyst: #9966cc; --accent: #ff4757; --sidebar-w: 70px;
+        }
+        [data-theme="light"] {
+            --bg: #f0f2f5; --nav-bg: #ffffff; --card-bg: #ffffff;
+            --text: #2c3e50; --secondary-text: #5f676d; --border: rgba(0, 0, 0, 0.1);
+        }
+        [data-theme="minecraft"] {
+            --bg: #3c2a1a; --nav-bg: #2b1d12; --card-bg: #4e3524; --text: #ffffff;
+            --primary: #55aa00; --border: #000000; font-family: 'Courier New', monospace;
+        }
+        [data-theme="kpop"] {
+            --bg: #fff0f6; --nav-bg: #ffffff; --card-bg: rgba(255, 255, 255, 0.85);
+            --text: #4a4e69; --primary: #ffafcc; --accent: #bde0fe;
+            background: linear-gradient(135deg, #e0e7ff 0%, #ffafcc 100%) fixed;
+        }
+
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); margin: 0; transition: background 0.3s, color 0.3s; overflow-x: hidden; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid var(--border); border-radius: 16px; }
+        .badge { font-size: 10px; padding: 4px 8px; border-radius: 6px; text-transform: uppercase; font-weight: 900; margin-left: 8px; }
+        .trending { background: var(--amethyst); color: white; }
+        .wip { background: var(--primary); color: white; }
+
+        .dot { height: 12px; width: 12px; border-radius: 50%; display: inline-block; box-shadow: 0 0 8px currentColor; }
+        .online { background-color: #4CAF50; color: #4CAF50; }
+        .partially-online { background-color: #FFC107; color: #FFC107; }
+        .mostly-offline { background-color: #FF9800; color: #FF9800; }
+        .offline { background-color: #ff4757; color: #ff4757; }
+
+        .ticker-wrap { width: 100%; overflow: hidden; background: var(--primary); color: white; padding: 10px 0; font-weight: bold; font-size: 0.9em; z-index: 2000; position: relative; }
+        .ticker { display: inline-block; white-space: nowrap; padding-left: 100%; animation: tickerAnimation 40s linear infinite; }
+        @keyframes tickerAnimation { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
+
+        .side-dock { position: fixed; left: 0; top: 0; height: 100%; width: var(--sidebar-w); background: var(--nav-bg); border-right: 1px solid var(--border); display: flex; flex-direction: column; justify-content: flex-start; align-items: center; gap: 30px; padding-top: 30px; z-index: 1500; }
+        .dock-item { color: var(--secondary-text); font-size: 1.3em; cursor: pointer; transition: color 0.3s, transform 0.3s; }
+        .dock-item:hover { color: var(--primary); transform: scale(1.1); }
+
+        nav { background: var(--nav-bg); padding: 15px 30px 15px calc(var(--sidebar-w) + 30px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; }
+        .nav-search { flex-grow: 1; max-width: 400px; margin: 0 30px; position: relative; }
+        .nav-search input { width: 100%; padding: 12px 20px 12px 40px; border-radius: 30px; border: 1px solid var(--border); background: var(--bg); color: var(--text); outline: none; box-sizing: border-box; }
+        .nav-search i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); opacity: 0.5; }
+
+        .main-content { margin-left: var(--sidebar-w); padding: 30px; max-width: 1200px; margin-right: auto; }
+        .hero { border-radius: 30px; background: url('https://daniezonsfusd.github.io/homepage/assets/CookieClicker.png') center/cover; overflow: hidden; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); border: 1px solid var(--border); margin-bottom: 40px; }
+        .hero-overlay { padding: 80px 60px; background: linear-gradient(90deg, rgba(0, 0, 0, 0.9) 20%, rgba(0, 0, 0, 0.2) 100%); color: white; }
+        .hero-btn { display: inline-block; margin-top: 20px; padding: 12px 30px; background: var(--primary); color: white; text-decoration: none; border-radius: 12px; font-weight: bold; transition: transform 0.3s, box-shadow 0.3s; border: none; cursor: pointer; }
+        .hero-btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
+        .card { background: var(--card-bg); padding: 25px; border-radius: 20px; border: 1px solid var(--border); transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s; text-decoration: none; color: var(--text); display: flex; flex-direction: column; }
+        .card:hover { transform: translateY(-8px); border-color: var(--primary); box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); }
+        .troll-card { border-bottom: 3px solid var(--accent); }
+
+        .issues-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .issue-card { border-radius: 24px; min-height: 350px; padding: 30px; background-size: cover; background-position: center 20%; position: relative; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; box-sizing: border-box; border: 1px solid var(--border); }
+
+        .stealth-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #ffffff; z-index: 100000; padding: 40px; color: #1a1a1a; font-family: "Georgia", serif; overflow-y: auto; }
+        .stealth-overlay-content { max-width: 900px; margin: 0 auto; line-height: 1.8; }
+        .stealth-overlay-toolbar { display: flex; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; border-bottom: 2px solid #eee; padding-bottom: 20px; align-items: center; }
+        .stealth-preset-btn { padding: 10px 18px; background: #f0f0f0; color: #333; border: 1px solid #ccc; border-radius: 6px; cursor: pointer; font-weight: bold; transition: background 0.2s; }
+        .stealth-preset-btn:hover { background: #e0e0e0; }
+        .stealth-editor-toggle { padding: 10px 18px; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; }
+        .stealth-close-btn { padding: 10px 18px; background: #ff4757; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; margin-left: auto; }
+        
+        .stealth-editor { display: none; background: #f8f9fa; padding: 25px; border-radius: 12px; margin-bottom: 30px; border: 1px solid #dee2e6; }
+        .stealth-editor input { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 6px; font-family: inherit; box-sizing: border-box; }
+        .stealth-editor textarea { width: 100%; min-height: 250px; padding: 15px; border: 1px solid #ccc; border-radius: 6px; font-family: 'Courier New', monospace; resize: vertical; box-sizing: border-box; }
+        .stealth-editor-save { background: #4CAF50; color: white; padding: 12px 24px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; margin-top: 15px; }
+        .stealth-presets-list { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 15px; }
+        .stealth-delete-preset { background: #ff4757; color: white; padding: 6px 12px; border: none; border-radius: 4px; cursor: pointer; font-size: 0.85em; }
+
+        .changelog { border-left: 3px solid var(--primary); margin-left: 10px; padding-left: 25px; }
+        .changelog-item { margin-bottom: 25px; position: relative; }
+        .changelog-item::before { content: ''; position: absolute; left: -35px; top: 4px; width: 16px; height: 16px; background: var(--bg); border: 4px solid var(--primary); border-radius: 50%; }
+
+        /* License Viewer Custom Styles */
+        .license-box {
+    max-height: 250px;
+    overflow-y: scroll;
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85em;
+    line-height: 1.6;
+    color: var(--text);
+    white-space: pre-wrap; /* Keeps your text layout and spacing exactly intact */
+}
+
+/* Optional: Custom scrollbar styling to fit the dark theme vibe */
+.license-box::-webkit-scrollbar {
+    width: 8px;
+}
+.license-box::-webkit-scrollbar-track {
+    background: transparent;
+}
+.license-box::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 4px;
+}
+.license-box::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+}
+        
+        
+        .announcement-box { padding: 18px; border-radius: 12px; background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border); margin-bottom: 15px; }
+        .announcement-box.important { border-left: 4px solid var(--accent); background: rgba(255, 71, 87, 0.03); }
+        .announcement-box.maintenance { border-left: 4px solid #FFC107; background: rgba(255, 193, 7, 0.03); }
+        .announcement-box.fixed { border-left: 4px solid #43b581; background: rgba(87, 242, 135, 0.03); }
+        .announcement-box.general { border-left: 4px solid var(--amethyst); background: rgba(153, 102, 204, 0.03); }
+
+        /* ── Favorites ── */
+        .fav-btn { background: none; border: none; cursor: pointer; font-size: 0.9em; padding: 4px 6px; border-radius: 6px; color: var(--secondary-text); transition: color 0.2s, transform 0.15s; position: absolute; top: 8px; right: 8px; }
+        .fav-btn:hover { transform: scale(1.2); }
+        .fav-btn.active { color: #FFD700; }
+        .card { position: relative; }
+        #pinned-section { margin-bottom: 30px; }
+        #pinned-row { display: flex; flex-wrap: wrap; gap: 12px; }
+        #pinned-section h3 { margin: 0 0 12px; font-size: 1em; color: var(--secondary-text); text-transform: uppercase; letter-spacing: 1px; }
+        .pinned-card { background: var(--card-bg); padding: 14px 40px 14px 18px; border-radius: 14px; border: 1px solid var(--primary); text-decoration: none; color: var(--text); font-size: 0.9em; font-weight: bold; display: flex; align-items: center; gap: 8px; position: relative; transition: transform 0.2s; }
+        .pinned-card:hover { transform: translateY(-3px); }
+        .pinned-card .fav-btn { top: 50%; transform: translateY(-50%); right: 8px; }
+        .pinned-card .fav-btn:hover { transform: translateY(-50%) scale(1.2); }
+
+        /* ── Genre Filters ── */
+        #genre-filter-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+        .genre-btn { padding: 7px 16px; border-radius: 20px; border: 1px solid var(--border); background: var(--card-bg); color: var(--secondary-text); cursor: pointer; font-size: 0.85em; font-weight: bold; transition: all 0.2s; }
+        .genre-btn:hover { border-color: var(--primary); color: var(--primary); }
+        .genre-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+        /* ── Recently Played ── */
+        #recent-section { margin-bottom: 30px; }
+        #recent-section h3 { margin: 0 0 12px; font-size: 1em; color: var(--secondary-text); text-transform: uppercase; letter-spacing: 1px; }
+        #recent-row { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 6px; }
+        #recent-row::-webkit-scrollbar { height: 4px; }
+        #recent-row::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+        .recent-chip { background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; padding: 10px 16px; text-decoration: none; color: var(--text); font-size: 0.85em; font-weight: bold; white-space: nowrap; display: flex; align-items: center; gap: 8px; transition: border-color 0.2s; }
+        .recent-chip:hover { border-color: var(--primary); }
+        .recent-chip i { color: var(--secondary-text); font-size: 0.9em; }
+
+        /* ── Broken game state ── */
+        .card.broken-game { opacity: 0.45; pointer-events: none; text-decoration: line-through; filter: grayscale(80%); cursor: not-allowed; }
+        .card.broken-game::after { content: '⚠ Broken'; position: absolute; top: 8px; left: 8px; font-size: 10px; background: var(--accent); color: white; padding: 3px 7px; border-radius: 6px; font-weight: 900; text-decoration: none; }
+
+        /* ── Visit milestone banner ── */
+        #milestone-banner { display: none; position: fixed; bottom: 30px; right: 30px; background: var(--nav-bg); border: 1px solid var(--primary); border-radius: 16px; padding: 18px 22px; z-index: 5000; max-width: 280px; box-shadow: 0 10px 30px rgba(0,0,0,0.4); animation: slideUp 0.4s ease; }
+        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        #milestone-banner h4 { margin: 0 0 6px; color: var(--primary); font-size: 1em; }
+        #milestone-banner p { margin: 0 0 12px; font-size: 0.85em; color: var(--secondary-text); line-height: 1.4; }
+        #milestone-close { background: var(--primary); color: white; border: none; border-radius: 8px; padding: 7px 16px; cursor: pointer; font-weight: bold; font-size: 0.85em; }
+
+        /* ── Voting board ── */
+        #voting-section { margin-top: 80px; padding: 40px; border-radius: 24px; border: 1px solid var(--border); }
+        #vote-input-row { display: flex; gap: 10px; margin-bottom: 25px; }
+        #vote-input { flex: 1; padding: 12px 18px; border-radius: 12px; border: 1px solid var(--border); background: var(--bg); color: var(--text); font-size: 0.95em; outline: none; }
+        #vote-input:focus { border-color: var(--primary); }
+        #vote-submit { padding: 12px 22px; background: var(--primary); color: white; border: none; border-radius: 12px; cursor: pointer; font-weight: bold; transition: transform 0.2s; }
+        #vote-submit:hover { transform: translateY(-2px); }
+        #vote-list { display: flex; flex-direction: column; gap: 12px; }
+        .vote-item { display: flex; align-items: center; gap: 14px; padding: 14px 18px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 14px; transition: border-color 0.2s; }
+        .vote-item:hover { border-color: var(--primary); }
+        .vote-item.vote-struck { opacity: 0.45; pointer-events: none; }
+        .vote-item.vote-struck .vote-name { text-decoration: line-through; color: var(--secondary-text); }
+        .vote-item.vote-struck .upvote-btn { display: none; }
+        .vote-struck-label { font-size: 0.75em; color: var(--accent); font-weight: 900; text-transform: uppercase; white-space: nowrap; }
+        .vote-count { font-size: 1.4em; font-weight: 900; color: var(--primary); min-width: 40px; text-align: center; }
+        .vote-name { flex: 1; font-weight: bold; }
+        .vote-bar-wrap { width: 120px; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+        .vote-bar { height: 100%; background: var(--primary); border-radius: 3px; transition: width 0.4s; }
+        .upvote-btn { padding: 7px 16px; background: none; border: 1px solid var(--border); border-radius: 10px; color: var(--primary); cursor: pointer; font-weight: bold; font-size: 0.85em; transition: all 0.2s; }
+        .upvote-btn:hover { background: var(--primary); color: white; }
+        .upvote-btn.voted { background: var(--primary); color: white; opacity: 0.7; cursor: default; }
+        /* Winner banner */
+        #vote-winner-banner { display: none; background: linear-gradient(135deg, rgba(114,137,218,0.12) 0%, rgba(153,102,204,0.08) 100%); border: 1px solid var(--primary); border-radius: 16px; padding: 22px 28px; margin-bottom: 30px; }
+        #vote-winner-banner.visible { display: flex; align-items: center; gap: 20px; }
+        .winner-trophy { font-size: 2.2em; flex-shrink: 0; }
+        .winner-text h3 { margin: 0 0 4px; font-size: 1.1em; color: var(--primary); }
+        .winner-text p { margin: 0; font-size: 0.9em; color: var(--secondary-text); line-height: 1.4; }
+        .winner-text strong { color: var(--text); }
+        /* Monthly badge */
+        .monthly-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(114,137,218,0.12); border: 1px solid rgba(114,137,218,0.3); border-radius: 8px; padding: 5px 12px; font-size: 0.78em; font-weight: 900; color: var(--primary); text-transform: uppercase; letter-spacing: 0.05em; margin-left: 12px; vertical-align: middle; }
+        .vote-disclaimer { font-size: 0.82em; color: var(--secondary-text); line-height: 1.5; padding: 14px 18px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 20px; }
+        .announcement-meta { display: flex; justify-content: space-between; font-size: 0.8em; margin-bottom: 8px; opacity: 0.7; }
+    </style>
+</head>
+<body data-theme="dark">
+
+
+<div id="milestone-banner">
+    <h4 id="milestone-title">🎉 Welcome back!</h4>
+    <p id="milestone-msg">Thanks for visiting DaniezOnSFUSD.</p>
+    <button id="milestone-close" onclick="document.getElementById('milestone-banner').style.display='none'">Nice!</button>
+</div>
+
+<div id="stealth-mode" class="stealth-overlay">
+    <div class="stealth-overlay-content">
+        <div class="stealth-overlay-toolbar">
+            <button class="stealth-preset-btn" onclick="loadStealthPreset('math')">📐 Math</button>
+            <button class="stealth-preset-btn" onclick="loadStealthPreset('science')">🧪 Science</button>
+            <button class="stealth-preset-btn" onclick="loadStealthPreset('socialstudies')">🌍 History</button>
+            <button class="stealth-preset-btn" onclick="loadStealthPreset('languagearts')">📚 English</button>
+            <button class="stealth-editor-toggle" onclick="toggleStealthEditor()"><i class="fas fa-pen"></i> Custom Editor</button>
+            <button class="stealth-close-btn" onclick="closeStealthMode()">Exit ( ] )</button>
+        </div>
+        
+        <div id="stealth-editor" class="stealth-editor">
+            <h3 style="margin-top: 0;">Create Custom Stealth Article</h3>
+            <input type="text" id="stealth-title" placeholder="Article Title (e.g., Biology Chapter 4)">
+            <textarea id="stealth-content" placeholder="Enter your article content here (HTML allowed)..."></textarea>
+            <div><button class="stealth-editor-save" onclick="saveCustomStealthPreset()">💾 Save as Preset</button></div>
+            <div style="margin-top: 25px; padding-top: 15px; border-top: 1px solid #ddd;">
+                <strong>Saved Custom Presets:</strong>
+                <div class="stealth-presets-list" id="custom-presets-list"></div>
+            </div>
+        </div>
+
+        <div id="stealth-content-area">
+            <h1>Unit 4: The Human Nervous System</h1>
+            <p><strong>Subject:</strong> Life Science | <strong>SFUSD Educational Resource</strong></p>
+            <hr>
+            <p>The nervous system is a complex network of nerves and cells that carry messages to and from the brain and spinal cord to various parts of the body. It includes both the Central Nervous System (CNS) and Peripheral Nervous System (PNS).</p>
+            <h3>Key Components:</h3>
+            <ul>
+                <li><strong>Brain:</strong> Controls all body functions and processes information</li>
+                <li><strong>Spinal Cord:</strong> Transmits signals between the brain and the rest of the body</li>
+                <li><strong>Neurons:</strong> Individual nerve cells that transmit electrical and chemical signals</li>
+                <li><strong>Synapses:</strong> Connections between neurons where signals are transmitted</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="side-dock">
+    <i class="fas fa-home dock-item" title="Home" onclick="window.location.href='#home'"></i>
+    <i class="fas fa-gamepad dock-item" title="Library" onclick="window.location.href='#games'"></i>
+    <i class="fas fa-server dock-item" title="Dashboard" onclick="window.location.href='#status-dashboard'"></i>
+    <i class="fas fa-bug dock-item" title="Tracker" onclick="window.location.href='#issues'"></i>
+    <i class="fas fa-gavel dock-item" title="License" onclick="window.location.href='#license-viewer'"></i>
+</div>
+
+<div class="ticker-wrap">
+    <div class="ticker">
+        ---------------- WELCOME BACK | ALL GAMES ARE NOW UP AND RUNNING! | PRESS [ FOR CUSTOM STEALTH MODE | PRESS R FOR RANDOM GAME | CHECK OUT THE NEW STATUS DASHBOARD ----------------
+    </div>
+</div>
+
+<nav>
+    <a href="#home" style="display: flex; align-items: center; gap: 15px; text-decoration: none; color: var(--text);">
+        <img src="https://avatars.githubusercontent.com/u/204815157?v=4" alt="DaniezonSFUSD" style="width: 40px; height: 40px; border-radius: 12px; border: 2px solid var(--primary);">
+        <span style="font-weight: 900; font-size: 1.2em;">DaniezOnSFUSD <span style="color: var(--primary);">HOMEPAGE</span></span>
+    </a>
+    <div class="nav-search">
+        <i class="fas fa-search"></i>
+        <input type="text" id="nav-search" placeholder="Search systems or games ( / )">
+    </div>
+    <div style="display: flex; gap: 15px; align-items: center;">
+        <i class="fas fa-cube" title="Minecraft Theme" onclick="setTheme('minecraft')" style="cursor: pointer; font-size: 1.2em;"></i>
+        <i class="fas fa-heart" title="K-Pop Theme" onclick="setTheme('kpop')" style="cursor: pointer; font-size: 1.2em;"></i>
+        <i class="fas fa-moon" id="theme-toggle" title="Toggle Dark/Light" style="cursor: pointer; font-size: 1.2em;"></i>
+    </div>
+</nav>
+
+<div class="main-content" id="home">
+    <section class="hero">
+        <div class="hero-overlay">
+            <div>
+                <p style="font-size: 0.9em; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; color: var(--primary); letter-spacing: 1px;">Featured Project</p>
+                <h1 style="margin: 0; font-size: 3.5em; line-height: 1.1;">Cookie Clicker <span class="badge wip" style="vertical-align: middle;">NEW!</span></h1>
+                <p style="font-size: 1.2em; opacity: 0.9; max-width: 600px; margin: 15px 0 25px;">Click a giant cookie to earn cookies, using them to purchase automatic, exponential upgrades like farms and factories!</p>
+                <a href="https://daniezonsfusd.github.io/multi2/games/cookieclicker" class="hero-btn">Play Now</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="glass" style="display: flex; justify-content: space-between; padding: 20px 30px; margin-bottom: 40px; border-left: 5px solid #4CAF50;" id="global-status-bar">
+        <div style="display: flex; align-items: center; gap: 12px; font-weight: bold;">
+            <span class="dot online" id="global-dot"></span>
+            <span>Network Status: <span id="master-status" style="color: var(--primary);">All Systems Functional</span></span>
+        </div>
+        <div id="last-updated-time" style="opacity: 0.6; font-size: 0.9em;">Updated: Pinging...</div>
+    </div>
+
+    <div id="pinned-section" style="display:none;">
+        <h3>Pinned Favorites</h3>
+        <div id="pinned-row"></div>
+    </div>
+
+    <div id="recent-section" style="display:none;">
+        <h3>Recently Played</h3>
+        <div id="recent-row"></div>
+    </div>
+
+    <section id="games">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 20px;">
+            <h2 style="font-size: 2em; margin: 0;">Game Library</h2>
+            <p id="search-results-count" style="opacity: 0.6; margin: 0;">52 assets loaded</p>
+        </div>
+        <div id="genre-filter-row">
+            <button class="genre-btn active" onclick="filterGenre('all')">🎮 All</button>
+            <button class="genre-btn" onclick="filterGenre('minecraft')">⛏️ Minecraft</button>
+            <button class="genre-btn" onclick="filterGenre('platformer')">🏃 Platformer</button>
+            <button class="genre-btn" onclick="filterGenre('horror')">👻 Horror</button>
+            <button class="genre-btn" onclick="filterGenre('idle')">🍪 Idle</button>
+            <button class="genre-btn" onclick="filterGenre('arcade')">🕹️ Arcade</button>
+            <button class="genre-btn" onclick="filterGenre('io')">🌐 .io Games</button>
+            <button class="genre-btn" onclick="filterGenre('papa')">🍕 Papa's</button>
+        </div>
+        <div class="grid" id="game-grid">
+            <a href="https://daniezonsfusd.github.io/1.20" class="card game-card" data-name="Eaglercraft 1.20" data-genre-minecraft="1" onclick="trackRecent(event, 'Eaglercraft 1.20', 'https://daniezonsfusd.github.io/1.20')">
+                <span style="font-weight:bold;">Eaglercraft 1.20 <span class="badge trending">POPULAR</span></span>
+                <button class="fav-btn" onclick="toggleFav(event, 'Eaglercraft 1.20', 'https://daniezonsfusd.github.io/1.20')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/1.8" class="card game-card" data-name="Resent Client" data-genre-minecraft="1" onclick="trackRecent(event, 'Resent Client', 'https://daniezonsfusd.github.io/1.8')">
+                <span style="font-weight:bold;">Resent Client</span>
+                <button class="fav-btn" onclick="toggleFav(event, 'Resent Client', 'https://daniezonsfusd.github.io/1.8')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/precisionclient" class="card game-card" data-name="Precision Client (1.8)" data-genre-minecraft="1" onclick="trackRecent(event, 'Precision Client (1.8)', 'https://daniezonsfusd.github.io/precisionclient')">
+                <span style="font-weight:bold;">Precision Client (1.8)</span>
+                <button class="fav-btn" onclick="toggleFav(event, 'Precision Client (1.8)', 'https://daniezonsfusd.github.io/precisionclient')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/beeswarm" class="card game-card" data-name="Bee Swarm" data-genre-idle="1" onclick="trackRecent(event, 'Bee Swarm', 'https://daniezonsfusd.github.io/beeswarm')">
+                <span style="font-weight:bold;">Bee Swarm</span>
+                <button class="fav-btn" onclick="toggleFav(event, 'Bee Swarm', 'https://daniezonsfusd.github.io/beeswarm')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/Geometrydashlite" class="card game-card" data-name="GD Lite" data-genre-platformer="1" onclick="trackRecent(event, 'GD Lite', 'https://daniezonsfusd.github.io/Geometrydashlite')">
+                <span style="font-weight:bold;">GD Lite</span>
+                <button class="fav-btn" onclick="toggleFav(event, 'GD Lite', 'https://daniezonsfusd.github.io/Geometrydashlite')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/subzero" class="card game-card" data-name="GD Subzero" data-genre-platformer="1" onclick="trackRecent(event, 'GD Subzero', 'https://daniezonsfusd.github.io/subzero')">
+                <span style="font-weight:bold;">GD Subzero <span class="badge wip">Laggy</span></span>
+                <button class="fav-btn" onclick="toggleFav(event, 'GD Subzero', 'https://daniezonsfusd.github.io/subzero')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/multi3/offline/geometryvibes.html" class="card game-card" data-name="GD Wave Challenge" data-genre-platformer="1" onclick="trackRecent(event, 'GD Wave Challenge', 'https://daniezonsfusd.github.io/multi3/offline/geometryvibes.html')">
+                <span style="font-weight:bold;">GD Wave Challenge</span>
+                <button class="fav-btn" onclick="toggleFav(event, 'GD Wave Challenge', 'https://daniezonsfusd.github.io/multi3/offline/geometryvibes.html')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/GDNorm" class="card game-card" data-name="Geometry Dash" data-genre-platformer="1" onclick="trackRecent(event, 'Geometry Dash', 'https://daniezonsfusd.github.io/GDNorm')">
+                <span style="font-weight:bold;">Geometry Dash</span>
+                <button class="fav-btn" onclick="toggleFav(event, 'Geometry Dash', 'https://daniezonsfusd.github.io/GDNorm')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/papas/papaspizza" class="card game-card" data-name="Papa's Pizzeria" data-genre-papa="1" onclick="trackRecent(event, 'Papa's Pizzeria', 'https://daniezonsfusd.github.io/papas/papaspizza')">
+                <span style="font-weight:bold;">Papa's Pizzeria</span>
+                <button class="fav-btn" onclick="toggleFav(event, 'Papa's Pizzeria', 'https://daniezonsfusd.github.io/papas/papaspizza')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/papas/papasfreezeria" class="card game-card" data-name="Papa's Freezeria" data-genre-papa="1" onclick="trackRecent(event, 'Papa's Freezeria', 'https://daniezonsfusd.github.io/papas/papasfreezeria')">
+                <span style="font-weight:bold;">Papa's Freezeria</span>
+                <button class="fav-btn" onclick="toggleFav(event, 'Papa's Freezeria', 'https://daniezonsfusd.github.io/papas/papasfreezeria')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/papas/papasbakeria" class="card game-card" data-name="Papa's Bakeria" data-genre-papa="1" onclick="trackRecent(event, 'Papa's Bakeria', 'https://daniezonsfusd.github.io/papas/papasbakeria')">
+                <span style="font-weight:bold;">Papa's Bakeria</span>
+                <button class="fav-btn" onclick="toggleFav(event, 'Papa's Bakeria', 'https://daniezonsfusd.github.io/papas/papasbakeria')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/papas/papasdonuteria" class="card game-card" data-name="Papa's Donuteria" data-genre-papa="1" onclick="trackRecent(event, 'Papa's Donuteria', 'https://daniezonsfusd.github.io/papas/papasdonuteria')">
+                <span style="font-weight:bold;">Papa's Donuteria</span>
+                <button class="fav-btn" onclick="toggleFav(event, 'Papa's Donuteria', 'https://daniezonsfusd.github.io/papas/papasdonuteria')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/papas/papasburgeria" class="card game-card" data-name="Papa's Burgeria" data-genre-papa="1" onclick="trackRecent(event, 'Papa's Burgeria', 'https://daniezonsfusd.github.io/papas/papasburgeria')">
+                <span style="font-weight:bold;">Papa's Burgeria</span>
+                <button class="fav-btn" onclick="toggleFav(event, 'Papa's Burgeria', 'https://daniezonsfusd.github.io/papas/papasburgeria')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/abduction/abduction" class="card game-card" data-name="Abduction!" data-genre-arcade="1" onclick="trackRecent(event, 'Abduction!', 'https://daniezonsfusd.github.io/abduction/abduction')">
+                <span style="font-weight:bold;">Abduction!</span>
+                <button class="fav-btn" onclick="toggleFav(event, 'Abduction!', 'https://daniezonsfusd.github.io/abduction/abduction')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/NautilusOS" class="card game-card" data-name="Nautilus OS"  onclick="trackRecent(event, 'Nautilus OS', 'https://daniezonsfusd.github.io/NautilusOS')">
+                <span style="font-weight:bold;">Nautilus OS <span class="badge wip">WIP</span></span>
+                <button class="fav-btn" onclick="toggleFav(event, 'Nautilus OS', 'https://daniezonsfusd.github.io/NautilusOS')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/8ballpool" class="card game-card" data-name="8 Ball Pool" data-genre-arcade="1" onclick="trackRecent(event, '8 Ball Pool', 'https://daniezonsfusd.github.io/8ballpool')">
+                <span style="font-weight:bold;">8 Ball Pool</span>
+                <button class="fav-btn" onclick="toggleFav(event, '8 Ball Pool', 'https://daniezonsfusd.github.io/8ballpool')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/Slope" class="card game-card" data-name="Slope" data-genre-arcade="1" onclick="trackRecent(event, 'Slope', 'https://daniezonsfusd.github.io/Slope')">
+                <span style="font-weight:bold;">Slope</span>
+                <button class="fav-btn" onclick="toggleFav(event, 'Slope', 'https://daniezonsfusd.github.io/Slope')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/bitlife" class="card game-card" data-name="BitLife" data-genre-idle="1" onclick="trackRecent(event, 'BitLife', 'https://daniezonsfusd.github.io/bitlife')">
+                <span style="font-weight:bold;">BitLife</span>
+                <button class="fav-btn" onclick="toggleFav(event, 'BitLife', 'https://daniezonsfusd.github.io/bitlife')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/multi3/offline/fnaf.html" class="card game-card" data-name="FNAF" data-genre-horror="1" onclick="trackRecent(event, 'FNAF', 'https://daniezonsfusd.github.io/multi3/offline/fnaf.html')">
+                <span style="font-weight:bold;">FNAF</span>
+                <button class="fav-btn" onclick="toggleFav(event, 'FNAF', 'https://daniezonsfusd.github.io/multi3/offline/fnaf.html')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/multi3/offline/fnaf2.html" class="card game-card" data-name="FNAF 2" data-genre-horror="1" onclick="trackRecent(event, 'FNAF 2', 'https://daniezonsfusd.github.io/multi3/offline/fnaf2.html')">
+                <span style="font-weight:bold;">FNAF 2</span>
+                <button class="fav-btn" onclick="toggleFav(event, 'FNAF 2', 'https://daniezonsfusd.github.io/multi3/offline/fnaf2.html')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/multi3/offline/fnaf3.html" class="card game-card" data-name="FNAF 3" data-genre-horror="1" onclick="trackRecent(event, 'FNAF 3', 'https://daniezonsfusd.github.io/multi3/offline/fnaf3.html')">
+                <span style="font-weight:bold;">FNAF 3</span>
+                <button class="fav-btn" onclick="toggleFav(event, 'FNAF 3', 'https://daniezonsfusd.github.io/multi3/offline/fnaf3.html')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/multi3/offline/fnaf4.html" class="card game-card" data-name="FNAF 4" data-genre-horror="1" onclick="trackRecent(event, 'FNAF 4', 'https://daniezonsfusd.github.io/multi3/offline/fnaf4.html')">
+                <span style="font-weight:bold;">FNAF 4</span>
+                <button class="fav-btn" onclick="toggleFav(event, 'FNAF 4', 'https://daniezonsfusd.github.io/multi3/offline/fnaf4.html')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/snek/" class="card game-card" data-name="Snek" data-genre-arcade="1" onclick="trackRecent(event, 'Snek', 'https://daniezonsfusd.github.io/snek/')">
+                <span style="font-weight:bold;">Snek <span class="badge wip">ORIGINAL &amp; TRENDING!</span></span>
+                <button class="fav-btn" onclick="toggleFav(event, 'Snek', 'https://daniezonsfusd.github.io/snek/')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/baldi" class="card game-card" data-name="Baldi's Basics" data-genre-horror="1" onclick="trackRecent(event, 'Baldi's Basics', 'https://daniezonsfusd.github.io/baldi')">
+                <span style="font-weight:bold;">Baldi's Basics</span>
+                <button class="fav-btn" onclick="toggleFav(event, 'Baldi's Basics', 'https://daniezonsfusd.github.io/baldi')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/bobasim" class="card game-card" data-name="Boba Simulator" data-genre-idle="1" onclick="trackRecent(event, 'Boba Simulator', 'https://daniezonsfusd.github.io/bobasim')">
+                <span style="font-weight:bold;">Boba Simulator</span>
+                <button class="fav-btn" onclick="toggleFav(event, 'Boba Simulator', 'https://daniezonsfusd.github.io/bobasim')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/multi2/games/amongus" class="card game-card" data-name="Among Us" data-genre-arcade="1" data-genre-io="1" onclick="trackRecent(event, 'Among Us', 'https://daniezonsfusd.github.io/multi2/games/amongus')">
+                <span style="font-weight:bold;">Among Us</span>
+                <button class="fav-btn" onclick="toggleFav(event, 'Among Us', 'https://daniezonsfusd.github.io/multi2/games/amongus')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/multi2/games/appel" class="card game-card" data-name="Appel" data-genre-platformer="1" onclick="trackRecent(event, 'Appel', 'https://daniezonsfusd.github.io/multi2/games/appel')">
+                <span style="font-weight:bold;">Appel</span>
+                <button class="fav-btn" onclick="toggleFav(event, 'Appel', 'https://daniezonsfusd.github.io/multi2/games/appel')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/multi2/games/breakout" class="card game-card" data-name="Atari Breakout" data-genre-arcade="1" onclick="trackRecent(event, 'Atari Breakout', 'https://daniezonsfusd.github.io/multi2/games/breakout')">
+                <span style="font-weight:bold;">Atari Breakout</span>
+                <button class="fav-btn" onclick="toggleFav(event, 'Atari Breakout', 'https://daniezonsfusd.github.io/multi2/games/breakout')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/multi2/games/cookieclicker" class="card game-card" data-name="Cookie Clicker" data-genre-idle="1" onclick="trackRecent(event, 'Cookie Clicker', 'https://daniezonsfusd.github.io/multi2/games/cookieclicker')">
+                <span style="font-weight:bold;">Cookie Clicker</span>
+                <button class="fav-btn" onclick="toggleFav(event, 'Cookie Clicker', 'https://daniezonsfusd.github.io/multi2/games/cookieclicker')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/multi2/games/cubefield" class="card game-card" data-name="CubeField" data-genre-arcade="1" onclick="trackRecent(event, 'CubeField', 'https://daniezonsfusd.github.io/multi2/games/cubefield')">
+                <span style="font-weight:bold;">CubeField</span>
+                <button class="fav-btn" onclick="toggleFav(event, 'CubeField', 'https://daniezonsfusd.github.io/multi2/games/cubefield')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/multi2/games/deathrun3d" class="card game-card" data-name="DeathRun 3D" data-genre-arcade="1" onclick="trackRecent(event, 'DeathRun 3D', 'https://daniezonsfusd.github.io/multi2/games/deathrun3d')">
+                <span style="font-weight:bold;">DeathRun 3D</span>
+                <button class="fav-btn" onclick="toggleFav(event, 'DeathRun 3D', 'https://daniezonsfusd.github.io/multi2/games/deathrun3d')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/multi2/games/digdug" class="card game-card" data-name="DigDug" data-genre-arcade="1" onclick="trackRecent(event, 'DigDug', 'https://daniezonsfusd.github.io/multi2/games/digdug')">
+                <span style="font-weight:bold;">DigDug</span>
+                <button class="fav-btn" onclick="toggleFav(event, 'DigDug', 'https://daniezonsfusd.github.io/multi2/games/digdug')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/multi2/games/flappybird" class="card game-card" data-name="Flappy Bird" data-genre-arcade="1" onclick="trackRecent(event, 'Flappy Bird', 'https://daniezonsfusd.github.io/multi2/games/flappybird')">
+                <span style="font-weight:bold;">Flappy Bird</span>
+                <button class="fav-btn" onclick="toggleFav(event, 'Flappy Bird', 'https://daniezonsfusd.github.io/multi2/games/flappybird')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/multi2/games/gettingoverit" class="card game-card" data-name="Getting Over It" data-genre-platformer="1" onclick="trackRecent(event, 'Getting Over It', 'https://daniezonsfusd.github.io/multi2/games/gettingoverit')">
+                <span style="font-weight:bold;">Getting Over It</span>
+                <button class="fav-btn" onclick="toggleFav(event, 'Getting Over It', 'https://daniezonsfusd.github.io/multi2/games/gettingoverit')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/multi2/games/run3" class="card game-card" data-name="Run 3" data-genre-arcade="1" onclick="trackRecent(event, 'Run 3', 'https://daniezonsfusd.github.io/multi2/games/run3')">
+                <span style="font-weight:bold;">Run 3</span>
+                <button class="fav-btn" onclick="toggleFav(event, 'Run 3', 'https://daniezonsfusd.github.io/multi2/games/run3')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/multi2/games/subwaysurfers" class="card game-card" data-name="Subway Surfers" data-genre-arcade="1" onclick="trackRecent(event, 'Subway Surfers', 'https://daniezonsfusd.github.io/multi2/games/subwaysurfers')">
+                <span style="font-weight:bold;">Subway Surfers</span>
+                <button class="fav-btn" onclick="toggleFav(event, 'Subway Surfers', 'https://daniezonsfusd.github.io/multi2/games/subwaysurfers')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/multi2/games/shellshockers" class="card game-card" data-name="Shell Shockers" data-genre-io="1" onclick="trackRecent(event, 'Shell Shockers', 'https://daniezonsfusd.github.io/multi2/games/shellshockers')">
+                <span style="font-weight:bold;">Shell Shockers</span>
+                <button class="fav-btn" onclick="toggleFav(event, 'Shell Shockers', 'https://daniezonsfusd.github.io/multi2/games/shellshockers')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/multi3/offline/polytrack.html" class="card game-card" data-name="PolyTrack" data-genre-arcade="1" onclick="trackRecent(event, 'PolyTrack', 'https://daniezonsfusd.github.io/multi3/offline/polytrack.html')">
+                <span style="font-weight:bold;">PolyTrack</span>
+                <button class="fav-btn" onclick="toggleFav(event, 'PolyTrack', 'https://daniezonsfusd.github.io/multi3/offline/polytrack.html')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/homepage/ESCAPE.html" class="card game-card" data-name="Escape Road City 2" data-genre-arcade="1" onclick="trackRecent(event, 'Escape Road City 2', 'https://daniezonsfusd.github.io/homepage/ESCAPE.html')">
+                <span style="font-weight:bold;">Escape Road City 2</span>
+                <button class="fav-btn" onclick="toggleFav(event, 'Escape Road City 2', 'https://daniezonsfusd.github.io/homepage/ESCAPE.html')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/10-min-til-dawn/10-minutes-till-dawn" class="card game-card" data-name="Ten Minutes Till Dawn" data-genre-arcade="1" onclick="trackRecent(event, 'Ten Minutes Till Dawn', 'https://daniezonsfusd.github.io/10-min-til-dawn/10-minutes-till-dawn')">
+                <span style="font-weight:bold;">Ten Minutes Till Dawn</span>
+                <button class="fav-btn" onclick="toggleFav(event, 'Ten Minutes Till Dawn', 'https://daniezonsfusd.github.io/10-min-til-dawn/10-minutes-till-dawn')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/multi3/offline/badparenting.html" class="card game-card" data-name="Bad Parenting" data-genre-arcade="1" onclick="trackRecent(event, 'Bad Parenting', 'https://daniezonsfusd.github.io/multi3/offline/badparenting.html')">
+                <span style="font-weight:bold;">Bad Parenting</span>
+                <button class="fav-btn" onclick="toggleFav(event, 'Bad Parenting', 'https://daniezonsfusd.github.io/multi3/offline/badparenting.html')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/multi3/offline/crossyroad.htm" class="card game-card" data-name="Crossy Roads" data-genre-arcade="1" onclick="trackRecent(event, 'Crossy Roads', 'https://daniezonsfusd.github.io/multi3/offline/crossyroad.htm')">
+                <span style="font-weight:bold;">Crossy Roads</span>
+                <button class="fav-btn" onclick="toggleFav(event, 'Crossy Roads', 'https://daniezonsfusd.github.io/multi3/offline/crossyroad.htm')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/multi3/offline/driftboss.htm" class="card game-card" data-name="Drift Boss" data-genre-arcade="1" onclick="trackRecent(event, 'Drift Boss', 'https://daniezonsfusd.github.io/multi3/offline/driftboss.htm')">
+                <span style="font-weight:bold;">Drift Boss</span>
+                <button class="fav-btn" onclick="toggleFav(event, 'Drift Boss', 'https://daniezonsfusd.github.io/multi3/offline/driftboss.htm')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/multi3/offline/granny.html" class="card game-card" data-name="Granny" data-genre-horror="1" onclick="trackRecent(event, 'Granny', 'https://daniezonsfusd.github.io/multi3/offline/granny.html')">
+                <span style="font-weight:bold;">Granny</span>
+                <button class="fav-btn" onclick="toggleFav(event, 'Granny', 'https://daniezonsfusd.github.io/multi3/offline/granny.html')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/multi3/offline/granny2.html" class="card game-card" data-name="Granny 2" data-genre-horror="1" onclick="trackRecent(event, 'Granny 2', 'https://daniezonsfusd.github.io/multi3/offline/granny2.html')">
+                <span style="font-weight:bold;">Granny 2</span>
+                <button class="fav-btn" onclick="toggleFav(event, 'Granny 2', 'https://daniezonsfusd.github.io/multi3/offline/granny2.html')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/multi3/offline/happywheels.html" class="card game-card" data-name="Happy Wheels" data-genre-arcade="1" onclick="trackRecent(event, 'Happy Wheels', 'https://daniezonsfusd.github.io/multi3/offline/happywheels.html')">
+                <span style="font-weight:bold;">Happy Wheels</span>
+                <button class="fav-btn" onclick="toggleFav(event, 'Happy Wheels', 'https://daniezonsfusd.github.io/multi3/offline/happywheels.html')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/multi3/offline/kartbros.html" class="card game-card" data-name="Kart Bros" data-genre-arcade="1" onclick="trackRecent(event, 'Kart Bros', 'https://daniezonsfusd.github.io/multi3/offline/kartbros.html')">
+                <span style="font-weight:bold;">Kart Bros</span>
+                <button class="fav-btn" onclick="toggleFav(event, 'Kart Bros', 'https://daniezonsfusd.github.io/multi3/offline/kartbros.html')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/multi3/offline/basketbros.html" class="card game-card broken-game" data-name="Basket Bros" data-genre-arcade="1" onclick="trackRecent(event, 'Basket Bros', 'https://daniezonsfusd.github.io/multi3/offline/basketbros.html')">
+                <span style="font-weight:bold;">Basket Bros</span>
+                
+            </a>
+            <a href="https://daniezonsfusd.github.io/multi3/offline/backrooms.html" class="card game-card" data-name="Backrooms" data-genre-horror="1" onclick="trackRecent(event, 'Backrooms', 'https://daniezonsfusd.github.io/multi3/offline/backrooms.html')">
+                <span style="font-weight:bold;">Backrooms</span>
+                <button class="fav-btn" onclick="toggleFav(event, 'Backrooms', 'https://daniezonsfusd.github.io/multi3/offline/backrooms.html')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/multi3/offline/holeio.html" class="card game-card" data-name="Hole.io" data-genre-io="1" onclick="trackRecent(event, 'Hole.io', 'https://daniezonsfusd.github.io/multi3/offline/holeio.html')">
+                <span style="font-weight:bold;">Hole.io <span class="badge wip">NEW!</span></span>
+                <button class="fav-btn" onclick="toggleFav(event, 'Hole.io', 'https://daniezonsfusd.github.io/multi3/offline/holeio.html')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/BurritoBison" class="card game-card" data-name="Burrito Bison" data-genre-arcade="1" onclick="trackRecent(event, 'Burrito Bison', 'https://daniezonsfusd.github.io/BurritoBison')">
+                <span style="font-weight:bold;">Burrito Bison <span class="badge wip">NEW!</span></span>
+                <button class="fav-btn" onclick="toggleFav(event, 'Burrito Bison', 'https://daniezonsfusd.github.io/BurritoBison')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/SuperLiquidSoccer" class="card game-card" data-name="Super Liquid Soccer" data-genre-arcade="1" onclick="trackRecent(event, 'Super Liquid Soccer', 'https://daniezonsfusd.github.io/SuperLiquidSoccer')">
+                <span style="font-weight:bold;">Super Liquid Soccer <span class="badge wip">NEW! (First Game Added From the Request Form!)</span></span>
+                <button class="fav-btn" onclick="toggleFav(event, 'Super Liquid Soccer', 'https://daniezonsfusd.github.io/SuperLiquidSoccer')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+        </div>
+    </section>
+
+    <section id="testing-grounds" style="margin-top: 80px; padding: 40px; border-radius: 24px; border: 1px solid rgba(255, 193, 7, 0.15); background: linear-gradient(135deg, rgba(255, 193, 7, 0.02) 0%, rgba(0, 0, 0, 0) 100%);" class="glass">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 25px;">
+            <h2 style="margin: 0; color: #FFC107; text-shadow: 0 0 10px rgba(255, 193, 7, 0.2);"><i class="fas fa-flask"></i> Testing Grounds</h2>
+            <p style="opacity: 0.6; margin: 0; font-size: 0.9em; font-style: italic;">Unstable Beta Builds</p>
+        </div>
+        
+        <div class="grid" id="testing-grid">
+            </div>
+    </section>
+
+    <section id="status-dashboard" style="margin-top: 80px; padding: 40px; border-radius: 24px; border: 1px solid var(--border);" class="glass">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+            <h2 style="margin: 0;"><i class="fas fa-server"></i> Website Diagnostics (Depends on your Network Strength if it Works or Not)</h2>
+            <button onclick="checkSystemStatus()" class="hero-btn" style="margin: 0; padding: 10px 20px;"><i class="fas fa-sync-alt"></i> Force Refresh</button>
+        </div>
+        <div class="grid" id="status-checker-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));"></div>
+    </section>
+
+    <section id="trolls" style="margin-top: 80px;">
+        <h2>Experimental / Trolls</h2>
+        <div class="grid">
+            <a href="https://daniezonsfusd.github.io/1.21." class="card troll-card">
+                <span style="font-weight: bold;">Scam Eaglercraft 1.21</span>
+                <p style="font-size: 0.8em; font-weight: normal; margin-top: 10px; color: var(--secondary-text);">Troll your friends! (Careful with Chromebooks)</p>
+            </a>
+            <a href="https://daniezonsfusd.github.io/eaglercraft-26.1" class="card troll-card">
+                <span style="font-weight: bold;">Scam Eaglercraft 1.22</span>
+                <p style="font-size: 0.8em; font-weight: normal; margin-top: 10px; color: var(--secondary-text);">Downloads virus_mspaint.virusexe repeatedly! Make sure to make them wait 10 seconds for it to work!</p>
+            </a>
+        </div>
+    </section>
+
+    <section id="issues" style="margin-top: 80px;">
+        <h2 style="margin-bottom: 30px;">Bug Tracker & Known Issues</h2>
+        <div class="issues-grid">
+            <div class="issue-card" style="background-image: url('https://daniezonsfusd.github.io/homepage/assets/NautilusOS.png');">
+                <div style="background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(4px); padding: 20px; border-radius: 16px;">
+                    <h3><i class="fas fa-desktop"></i> NautilusOS</h3>
+                    <ul>
+                        <li>x86 Emulator does not load</li>
+                        <li>UltraViolet/Helios Browser 404 error</li>
+                        <li>Themes are not functional</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="issue-card" style="background-image: url('https://daniezonsfusd.github.io/homepage/assets/1.20.png');">
+                <div style="background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(3px); padding: 20px; border-radius: 16px;">
+                    <h3><i class="fas fa-cube"></i> Eaglercraft 1.20</h3>
+                    <ul>
+                        <li>Mace/Elytra features are missing.</li>
+                        <li>Feature requests for 1.20 items are ignored.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="issue-card" style="background-image: url('https://daniezonsfusd.github.io/homepage/assets/fnaf.png');">
+                <div style="background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(2px); padding: 20px; border-radius: 16px;">
+                    <h3><i class="fas fa-play"></i> All FNAF Games</h3>
+                    <ul>
+                        <li>Doesnt Load Sometimes</li>
+                        <li>FIXED!</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 80px;">
+        <section>
+            <h2>Dev Changelog</h2>
+            <div class="changelog">
+                <div class="changelog-item">
+                    <strong>May 20, 2026</strong>
+                    <p style="margin: 5px 0; color: var(--secondary-text);">Added User End Agreement Section and Announcements Section to Homepage.</p>
+                </div>
+                <div class="changelog-item">
+                    <strong>April 24, 2026</strong>
+                    <p style="margin: 5px 0; color: var(--secondary-text);">Added Licence's and copyright notice to bottom footer, also added new games to website diagnostics, made a new troll thing.</p>
+                </div>
+                <div class="changelog-item">
+                    <strong>April 16, 2026</strong>
+                    <p style="margin: 5px 0; color: var(--secondary-text);">Added ability to change what your stealth mode's research "essay" is about and added the Custom Editor feature.</p>
+                </div>
+                <div class="changelog-item">
+                    <strong>April 15, 2026</strong>
+                    <p style="margin: 5px 0; color: var(--secondary-text);">Added Issues, Timeline, and Website Services Checker dashboard.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="announcements">
+            <h2>Community Announcements</h2>
+            <div style="max-height: 480px; overflow-y: auto; padding-right: 10px;">
+                <div class="announcement-box fixed">
+                    <div class="announcement-meta">
+                        <span><i class="fas fa-check-circle"></i> <strong>Issue Resolved</strong></span>
+                        <span>May 26, 2026</span>
+                    </div>
+                    <p style="margin: 5px 0; font-weight: bold; color: var(--text);">Updating Schedule Restored</p>
+                    <p style="margin: 5px 0 0; font-size: 0.9em; color: var(--secondary-text);">My school has returned my Chromebook! (YAY!) This means my updating schedule will return to normal with multiple games per week. New games will be added starting May 26, 2026.</p>
+                </div>
+                <div class="announcement-box important">
+                    <div class="announcement-meta">
+                        <span><i class="fas fa-exclamation-triangle"></i> <strong>IMPORTANT ALERT</strong></span>
+                        <span>May 20, 2026</span>
+                    </div>
+                    <p style="margin: 5px 0; font-weight: bold; color: var(--text);">MAJOR SETBACK IN UPDATES! (Resolved)</p>
+                    <p style="margin: 5px 0 0; font-size: 0.9em; color: var(--secondary-text);">My school has taken away my chromebook because one of my teachers couldnt see me on GoGuardian, this will mean that my updates will be less frequently pushed to github! Sorry for the inconvenience and we will be back soon!</p>
+                </div>
+                <div class="announcement-box maintenance">
+                    <div class="announcement-meta">
+                        <span><i class="fas fa-tools"></i> <strong>MAINTENANCE / MIRRORS</strong></span>
+                        <span>May 15, 2026</span>
+                    </div>
+                    <p style="margin: 5px 0; font-weight: bold; color: var(--text);">Proxy Mirror Links Deployment</p>
+                    <p style="margin: 5px 0 0; font-size: 0.9em; color: var(--secondary-text);">Working on asset structures to ensure links load even under heavy school network filtering.</p>
+                </div>
+            </div>
+        </section>
+        
+                <section id="community" class="glass" style="padding: 40px; margin-top: 80px; grid-column: span 2;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+                <div>
+                    <h2 style="margin-top: 0;"><i class="fas fa-file-alt"></i> Official Requests</h2>
+                    <p style="opacity: 0.8; font-size: 0.9em; margin-bottom: 25px;">Choose the appropriate form to request games or report issues.</p>
+                    <div style="display: flex; flex-direction: column; gap: 15px;">
+                        <a href="https://forms.gle/t5S82BMnueXmizKZ9" target="_blank" class="hero-btn" style="margin: 0; background: var(--primary); text-align: center;"><i class="fas fa-graduation-cap"></i> SFUSD Student Request</a>
+                        <a href="https://forms.gle/4YwCSBwsb3HeEPAw7" target="_blank" class="hero-btn" style="margin: 0; background: #6c5ce7; text-align: center;"><i class="fas fa-globe"></i> External User Request</a>
+                        <p style="font-size: 0.8em; opacity: 0.5; margin-top: 10px;"><i class="fas fa-info-circle"></i> Direct inquiries: <strong>dalouie2@s.sfusd.edu</strong></p>
+                    </div>
+                </div>
+                <div>
+                    <h2>Connect & Follow</h2>
+                    <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 30px;">
+                        <a href="https://www.twitch.tv/daniezgamemc" target="_blank" class="hero-btn" style="background: #9146FF; margin: 0;"><i class="fab fa-twitch"></i> Twitch</a>
+                        <a href="https://discord.gg/V9nVwu836D" target="_blank" class="hero-btn" style="background: #7289da; margin: 0;"><i class="fab fa-discord"></i> Discord</a>
+                        <a href="https://github.com/daniezonsfusd" target="_blank" class="hero-btn" style="background: #24292e; margin: 0;"><i class="fab fa-github"></i> GitHub</a>
+                        <a href="https://bsky.app/profile/daniezsocial.bsky.social" target="_blank" class="hero-btn" style="background: #41ADFF; margin: 0;"><i class="fa-brands fa-bluesky"></i> Bluesky</a>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 20px; padding: 25px; background: rgba(255, 255, 255, 0.05); border-radius: 20px; border: 1px solid var(--border);">
+                        <img src="https://avatars.githubusercontent.com/u/204815157?v=4" style="width: 80px; height: 80px; border-radius: 18px; border: 2px solid var(--primary);" alt="Creator Avatar">
+                        <div>
+                            <h3 style="margin: 0; color: var(--primary);">DaniezonSFUSD</h3>
+                            <p style="margin: 5px 0 0; font-size: 0.85em; opacity: 0.8; line-height: 1.4;">Lead Developer (and only) | Optimizing game environments and tools for Chromebook performance. Known for my famous 1.20 link!</p>
+                            <div style="margin-top: 10px; display: flex; gap: 10px;">
+                                <span style="font-size: 0.7em; background: var(--amethyst); padding: 3px 8px; border-radius: 4px; font-weight: bold;">CREATOR</span>
+                                <span style="font-size: 0.7em; background: #4CAF50; padding: 3px 8px; border-radius: 4px; font-weight: bold;">ACTIVE</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>    
+    </div>
+
+
+    <section id="voting-section" class="glass">
+        <h2 style="margin-top:0;">Monthly Game Vote <span class="monthly-badge">Monthly</span></h2>
+        <p style="opacity:0.7; font-size:0.9em; margin-bottom:20px;">Every month, the most-voted game gets added to the library. Votes reset at the start of each month — so campaign hard!</p>
+
+        <div id="vote-winner-banner">
+            <div class="winner-trophy">🏆</div>
+            <div class="winner-text">
+                <h3 id="winner-title">This Month's Winner</h3>
+                <p id="winner-body">Loading...</p>
+            </div>
+        </div>
+
+        <div class="vote-disclaimer">
+            <strong>How this works:</strong> Use the request forms in the Community section to formally submit a game for consideration. The voting board lets the community weigh in on what gets added next. The top-voted game each month gets added — but entries that aren't feasible to add will be marked as ineligible.
+        </div>
+
+        <div id="vote-input-row">
+            <input id="vote-input" type="text" placeholder="Suggest a game (e.g. Friday Night Funkin)..." maxlength="60">
+            <button id="vote-submit" onclick="submitVote()">Submit</button>
+        </div>
+        <div id="vote-list"></div>
+    </section>
+
+    <section id="license-viewer" class="glass" style="margin-top: 80px; padding: 40px;">
+    <h2 style="margin-top: 0; margin-bottom: 20px;">
+        <i class="fas fa-gavel"></i> End User License Agreement
+    </h2>
+    <p style="opacity: 0.8; font-size: 0.9em; margin-bottom: 20px;">
+        Please review the proprietary license terms governing the use, branching, and attribution requirements of this repository.
+    </p>
+    
+    <div class="license-box">
+PROPRIETARY LICENSE AGREEMENT Copyright (c) 2026 DaniezOnSFUSD. All Rights Reserved.
+-------------------------------------------------------------------------------
+
+I. MANDATORY NOTICE RETENTION AND ATTRIBUTION
+THIS CONDITION IS A MATERIAL TERM OF THIS AGREEMENT.
+Subject to the permissions granted herein, any and all permitted copies, forks, or partial redistributions of the Proprietary Components must strictly adhere to the following:
+
+Retention of Copyright: The original copyright notice—Copyright (c) 2026 DaniezOnSFUSD. All Rights Reserved.—must remain intact and clearly visible in all source files and repositories.
+License Inclusion: A complete, unaltered copy of this LICENSE file must be included in the root directory of any fork or copy.
+Source Attribution: A prominent link or reference back to the original source repository hosted by DaniezOnSFUSD must be maintained in the project documentation (e.g., https://github.com/DaniezOnSFUSD/homepage/blob/main/LICENSE).
+
+Failure to include these notices constitutes a material breach of contract, renders the license null and void ab initio, and constitutes unauthorized copyright infringement.
+
+II. DEFINITIONS AND SCOPE OF JURISDICTION
+This Agreement constitutes a legally binding contractual instrument between the Licensee (hereafter "the User") and DaniezOnSFUSD (hereafter "the Licensor").
+This Agreement governs the "Proprietary Components," defined as:
+
+Architectural Logic: Unique directory hierarchies, navigational schematics, and structural metadata.
+Codebase: All custom HTML5, CSS3, ECMAScript-compliant JavaScript, and backend logic facilitating the User Interface (UI).
+Visual Assets: Proprietary iconography, trade dress, vector graphics, and branding motifs.
+
+III. THIRD-PARTY ASSET ATTRIBUTION AND INDEMNIFICATION
+The repository incorporates distinct "Third-Party Modules" (including but not limited to Slope, Papa’s Gamerias, and EaglerCraft).
+Retention of Title: Licensor asserts no claim of ownership over assets authored by RenzorsRevenge1, Flipline Studios, Armor Games, lax1dude, chocofush, elite4r, or associated entities.
+External Governance: User interaction with Third-Party Modules is subject to the respective End User License Agreements (EULA) of the original creators.
+The Licensor is held harmless against any claims arising from the User's misuse of these materials.
+
+IV. RESTRICTIVE GRANT OF NON-TRANSFERABLE LICENSE
+Subject to the condition precedent of strict adherence to Section I and the GitHub Terms of Service (ToS), the Licensor grants a Limited, Revocable, Non-Sublicensable, and Non-Exclusive License to:
+
+Render and inspect the Proprietary Components via the GitHub web interface.
+Execute a "Fork" within the GitHub ecosystem for strictly non-commercial, personal, and archival purposes.
+
+V. COVENANTS AND PROHIBITED EXPLOITATIONS
+Any exercise of rights not explicitly enumerated in Section IV is strictly ultra vires.
+The User is perpetually enjoined from:
+
+Unauthorized Replication: Mirroring or deployment of Proprietary Components on external servers, CDNs, or secondary hosting platforms.
+Derivative Transformation: Creation of modified works that substantially replicate the "Look and Feel" (Trade Dress) of the original interface.
+Commercial Monetization: Any deployment involving programmatic advertising, paywalled access, or the solicitation of donations.
+Secondary Distribution: Selling, leasing, or assigning the proprietary source code to any third party.
+
+VI. LIMITATION OF LIABILITY AND "AS-IS" PROVISO
+TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE PROPRIETARY COMPONENTS ARE PROVIDED "AS IS".
+The Licensor disclaims all warranties, express or implied. In no event shall the Licensor be liable for any claims, damages, or other liability, whether in an action of contract, tort, or otherwise, arising from or in connection with the software.
+
+VII. TERMINATION AND ENFORCEMENT
+Automatic Rescission: Any breach of this Agreement results in the immediate and automatic termination of the license without notice.
+Legal Recourse: The Licensor reserves the right to seek injunctive relief and pursue statutory damages under the DMCA and international intellectual property treaties.
+
+VIII. CONTACT INFORMATION
+For inquiries regarding permission requests or commercial usage rights, contact the repository owner directly through the GitHub platform.
+    </div>
+    </section>
+
+    <footer style="margin-top: 80px; padding: 60px 20px; border-top: 1px solid var(--border); opacity: 0.9; font-size: 0.85em; line-height: 1.6; color: var(--text);">
+        <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; text-align: left;">
+            <div>
+                <h4 style="text-transform: uppercase; letter-spacing: 2px; color: var(--primary); margin-bottom: 15px;">System Controls</h4>
+                <p style="margin: 5px 0;"><strong>[</strong> — Enter Stealth Mode</p>
+                <p style="margin: 5px 0;"><strong>]</strong> — Exit Stealth Mode</p>
+                <p style="margin: 5px 0;"><strong>/</strong> — Game Search</p>
+                <p style="margin: 5px 0;"><strong>R</strong> — Random Asset Launch</p>
+            </div>
+            <div>
+                <h4 style="text-transform: uppercase; letter-spacing: 2px; color: var(--primary); margin-bottom: 15px;">Development Team</h4>
+                <p style="margin: 5px 0;">Project Lead: <strong>DaniezOnSFUSD</strong></p>
+                <p style="margin: 5px 0;">Flash Support: <strong>JWheasley672</strong></p>
+                <p style="margin: 15px 0 5px 0; opacity: 0.8;">Special shout out to <strong>Adam</strong> at <strong>Aptos Middle</strong>.</p>
+            </div>
+            <div>
+                <h4 style="text-transform: uppercase; letter-spacing: 2px; color: var(--primary); margin-bottom: 15px;">Legal & Licensing</h4>
+                <p style="margin: 5px 0;">© 2026 <strong>DaniezOnSFUSD</strong>. <strong>All Rights Reserved</strong>.</p>
+                <p style="margin: 5px 0;">Site architecture and custom code are protected under a <strong>Proprietary License</strong>.</p>
+                <p style="margin: 10px 0; font-style: italic; opacity: 0.7; font-size: 0.9em;">External Credits: Slope by RenzorsRevenge1; Papa's Games by Flipline Studios; EaglerCraft 1.20 by lax1dude; Scam Eagler 1.22 by DaniezOnSFUSD.</p>
+            </div>
+        </div>
+        <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); text-align: center; opacity: 0.6;">
+            <p>Made by a student, for students. Developed for the SFUSD Community.</p>
+        </div>
+    </footer>
+</div>
+
+<script>
+
+        // --- Testing Grounds Inventory ---
+    // If you have no games ready for beta testing, leave this array completely empty: []
+    // To add a game, follow this format: { name: "Game Title", url: "https://link.com", status: "Laggy" }
+    const testingGroundsData = [
+        { 
+            name: "2D Grid PvP Arena Beta", 
+            url: "https://daniezonsfusd.github.io/Testing/1.html",
+            status: "BETA TESTING NOW" 
+        }
+    ];
+
+    function renderTestingGrounds() {
+        const testingGrid = document.getElementById('testing-grid');
+        if (!testingGrid) return;
+
+        if (testingGroundsData.length === 0) {
+            // Placeholder fallback layout when no builds are active
+            testingGrid.style.gridTemplateColumns = "1fr";
+            testingGrid.innerHTML = `
+                <div style="text-align: center; padding: 40px 20px; border: 1px dashed rgba(255, 255, 255, 0.1); border-radius: 16px; background: rgba(0,0,0,0.15);">
+                    <i class="fas fa-lock" style="font-size: 2em; color: rgba(255, 193, 7, 0.4); margin-bottom: 15px; display: block;"></i>
+                    <span style="font-weight: bold; opacity: 0.9; letter-spacing: 1px; color: var(--secondary-text);">NO UNSTABLE EXPERIMENTS RUNNING</span>
+                    <p style="margin: 8px 0 0; font-size: 0.85em; opacity: 0.5; max-width: 500px; margin-left: auto; margin-right: auto;">
+                        All current assets have migrated over to the main production library. Check back later for developer canary builds.
+                    </p>
+                </div>
+            `;
+        } else {
+            // Restore regular layout alignment if items are present
+            testingGrid.style.gridTemplateColumns = "repeat(auto-fill, minmax(240px, 1fr))";
+            testingGrid.innerHTML = testingGroundsData.map(game => `
+                <a href="${game.url}" class="card game-card" style="border-bottom: 3px solid #FFC107;">
+                    <span style="font-weight: bold;">${game.name}</span>
+                    <span class="badge" style="background: #FFC107; color: #000; align-self: flex-start; margin-left: 0; margin-top: 10px;">${game.status || 'TEST'}</span>
+                </a>
+            `).join('');
+        }
+    }
+
+    // --- Global Theme Controls ---
+    const themeBtn = document.getElementById('theme-toggle');
+    function setTheme(themeName) { 
+        document.body.setAttribute("data-theme", themeName); 
+        localStorage.setItem("site-theme", themeName); 
+        if (themeBtn) themeBtn.className = themeName === 'light' ? 'fas fa-sun' : 'fas fa-moon';
+    }
+    setTheme(localStorage.getItem("site-theme") || "dark");
+    if (themeBtn) {
+        themeBtn.onclick = () => {
+            document.body.getAttribute("data-theme") === "dark" ? setTheme("light") : setTheme("dark");
+        };
+    }
+
+    // --- Search Utility ---
+    const searchInput = document.getElementById('nav-search');
+    const gameCards = document.querySelectorAll('.game-card');
+    if (searchInput) {
+        searchInput.oninput = (e) => {
+            const queryValue = e.target.value.toLowerCase();
+            let matchedCount = 0;
+            gameCards.forEach(card => {
+                const isMatch = card.textContent.toLowerCase().includes(queryValue);
+                card.style.display = isMatch ? 'flex' : 'none';
+                if (isMatch) matchedCount++;
+            });
+            const resultsCounter = document.getElementById('search-results-count');
+            if (resultsCounter) resultsCounter.innerText = `${matchedCount} assets loaded`;
+        };
+    }
+
+    // --- Stealth Mode Presets & Custom Editor ---
+    const stealthPresets = {
+        math: { title: "Unit 3: Algebra & Functions", content: `<h1>Unit 3: Algebra & Functions</h1><p><strong>Subject:</strong> Mathematics</p><hr><h3>Key Concepts:</h3><ul><li>Functions & Relations</li><li>Linear Equations Mapping</li><li>Coordinate Graphing Systems</li></ul>` },
+        science: { title: "Unit 5: Cell Biology", content: `<h1>Unit 5: Cell Biology</h1><p><strong>Subject:</strong> Biology</p><hr><h3>Structure:</h3><ul><li>Nucleus Operations</li><li>Mitochondrial ATP Synthesis</li><li>Cytoplasm Matrix Flow</li></ul>` },
+        socialstudies: { title: "Unit 7: Industrial Revolution", content: `<h1>Unit 7: Industrial Revolution</h1><p><strong>Subject:</strong> History</p><hr><p>Analysis of urbanization, manufacturing transitions, and production optimization in the mid-19th century environment.</p>` },
+        languagearts: { title: "Unit 4: Shakespeare", content: `<h1>Unit 4: Literary Analysis</h1><p><strong>Subject:</strong> Language Arts</p><hr><p>Detailed exploration of metrics, thematic development, prose vs verse styles, and tragic narrative formatting structures.</p>` }
+    };
+
+    function loadStealthPreset(presetKey) {
+        const contentArea = document.getElementById('stealth-content-area');
+        const selectedPreset = stealthPresets[presetKey];
+        if (selectedPreset) { contentArea.innerHTML = selectedPreset.content; document.title = selectedPreset.title + " - Research"; }
+    }
+    function toggleStealthEditor() {
+        const editorPanel = document.getElementById('stealth-editor');
+        editorPanel.style.display = (editorPanel.style.display === 'none' || editorPanel.style.display === '') ? 'block' : 'none';
+        if (editorPanel.style.display === 'block') loadCustomPresets();
+    }
+    function saveCustomStealthPreset() {
+        const userTitle = document.getElementById('stealth-title').value.trim();
+        const userContent = document.getElementById('stealth-content').value.trim();
+        if (!userTitle || !userContent) { alert('Please fill out both fields.'); return; }
+        const key = 'custom_' + Date.now();
+        const stored = JSON.parse(localStorage.getItem('stealthCustomPresets') || '{}');
+        stored[key] = { title: userTitle, content: userContent };
+        localStorage.setItem('stealthCustomPresets', JSON.stringify(stored));
+        document.getElementById('stealth-title').value = ''; document.getElementById('stealth-content').value = '';
+        loadCustomPresets();
+    }
+    function loadCustomPresets() {
+        const stored = JSON.parse(localStorage.getItem('stealthCustomPresets') || '{}');
+        const listContainer = document.getElementById('custom-presets-list');
+        listContainer.innerHTML = '';
+        Object.entries(stored).forEach(([key, preset]) => {
+            const item = document.createElement('div');
+            item.style.display = 'flex'; item.style.gap = '5px';
+            item.innerHTML = `<button class="stealth-preset-btn" onclick="loadCustomPreset('${key}')">${preset.title}</button><button class="stealth-delete-preset" onclick="deleteCustomPreset('${key}')">Delete</button>`;
+            listContainer.appendChild(item);
+        });
+    }
+    function loadCustomPreset(key) {
+        const stored = JSON.parse(localStorage.getItem('stealthCustomPresets') || '{}');
+        if (stored[key]) { document.getElementById('stealth-content-area').innerHTML = `<h1>${stored[key].title}</h1><hr>${stored[key].content}`; document.title = stored[key].title; }
+    }
+    function deleteCustomPreset(key) {
+        if (confirm('Delete this custom preset?')) {
+            const stored = JSON.parse(localStorage.getItem('stealthCustomPresets') || '{}');
+            delete stored[key]; localStorage.setItem('stealthCustomPresets', JSON.stringify(stored));
+            loadCustomPresets();
+        }
+    }
+    function closeStealthMode() { document.getElementById('stealth-mode').style.display = 'none'; document.title = "DaniezOnSFUSD | Community Hub"; }
+
+    // --- Diagnostic Dashboard ---
+    const gameData = [
+        { name: "Eaglercraft 1.20", url: "https://daniezonsfusd.github.io/1.20" },
+        { name: "Resent Client 1.8", url: "https://daniezonsfusd.github.io/1.8" },
+        { name: "Precision Client", url: "https://daniezonsfusd.github.io/precisionclient" },
+        { name: "Bee Swarm", url: "https://daniezonsfusd.github.io/beeswarm" },
+        { name: "GD Lite", url: "https://daniezonsfusd.github.io/Geometrydashlite" },
+        { name: "GD Subzero", url: "https://daniezonsfusd.github.io/subzero" },
+        { name: "GD Wave Challenge", url: "https://daniezonsfusd.github.io/multi3/offline/geometryvibes.html/", forceOnline: true },
+        { name: "Papas Pizzaeria", url: "https://daniezonsfusd.github.io/papas/papaspizza" },
+        { name: "Papas Freezeria", url: "https://daniezonsfusd.github.io/papas/papasfreezeria" },
+        { name: "Papas Bakeria", url: "https://daniezonsfusd.github.io/papas/papasbakeria" },
+        { name: "Papas Donuteria", url: "https://daniezonsfusd.github.io/papas/papasdonuteria" },
+        { name: "Abduction!", url: "https://daniezonsfusd.github.io/abduction/abduction" },
+        { name: "Nautilus OS", url: "https://daniezonsfusd.github.io/NautilusOS" },
+        { name: "Slope", url: "https://daniezonsfusd.github.io/Slope" },
+        { name: "Scam Eagler 1.21", url: "https://daniezonsfusd.github.io/1.21." },
+        { name: "Scam Eagler 1.22", url: "https://daniezonsfusd.github.io/eaglercraft-26.1" },
+        { name: "8 Ball Pool", url: "https://daniezonsfusd.github.io/8ballpool" },
+        { name: "BitLife", url: "https://daniezonsfusd.github.io/bitlife" },
+        { name: "FNAF", url: "https://daniezonsfusd.github.io/multi3/offline/fnaf.html" },
+        { name: "FNAF 2", url: "https://daniezonsfusd.github.io/multi3/offline/fnaf2.html" },
+        { name: "FNAF 3", url: "https://daniezonsfusd.github.io/multi3/offline/fnaf3.html" },
+        { name: "FNAF 4", url: "https://daniezonsfusd.github.io/multi3/offline/fnaf4.html" },
+        { name: "Snek", url: "https://daniezonsfusd.github.io/snek" },
+        { name: "Baldi's Basics", url: "https://daniezonsfusd.github.io/baldi" },
+        { name: "Boba Simulator", url: "https://daniezonsfusd.github.io/bobasim" },
+        { name: "Among Us", url: "https://daniezonsfusd.github.io/multi2/games/amongus" },
+        { name: "Appel", url: "https://daniezonsfusd.github.io/multi2/games/appel" },
+        { name: "Atari Breakout", url: "https://daniezonsfusd.github.io/multi2/games/breakout" },
+        { name: "Cookie Clicker", url: "https://daniezonsfusd.github.io/multi2/games/cookieclicker" },
+        { name: "CubeField", url: "https://daniezonsfusd.github.io/multi2/games/cubefield" },
+        { name: "Deathrun 3D", url: "https://daniezonsfusd.github.io/multi2/games/deathrun3d" },
+        { name: "DigDug", url: "https://daniezonsfusd.github.io/multi2/games/digdug" },
+        { name: "Flappy Bird", url: "https://daniezonsfusd.github.io/multi2/games/flappybird" },
+        { name: "Getting Over It", url: "https://daniezonsfusd.github.io/multi2/games/gettingoverit" },
+        { name: "Run 3", url: "https://daniezonsfusd.github.io/multi2/games/run3" },
+        { name: "Subway Surfers", url: "https://daniezonsfusd.github.io/multi2/games/subwaysurfers" },
+        { name: "Shell Shockers", url: "https://daniezonsfusd.github.io/multi2/games/shellshockers" },
+        { name: "PolyTrack", url: "https://daniezonsfusd.github.io/polytrack" },
+        { name: "Escape Road City 2", url: "https://daniezonsfusd.github.io/homepage/ESCAPE.html" },
+        { name: "Ten Minutes Till Dawn", url: "https://daniezonsfusd.github.io/10-min-til-dawn/10-minutes-till-dawn/" },
+        { name: "Bad Parenting", url: "https://daniezonsfusd.github.io/multi3/offline/badparenting.html/", forceOnline: true },
+        { name: "Crossy Roads", url: "https://daniezonsfusd.github.io/multi3/offline/crossyroad.htm/", forceOnline: true },
+        { name: "Drift Boss", url: "https://daniezonsfusd.github.io/multi3/offline/driftboss.htm/", forceOnline: true },
+        { name: "Granny", url: "https://daniezonsfusd.github.io/multi3/offline/granny.html/", forceOnline: true },
+        { name: "Granny 2", url: "https://daniezonsfusd.github.io/multi3/offline/granny2.html/", forceOnline: true },
+        { name: "Happy Wheels", url: "https://daniezonsfusd.github.io/multi3/offline/happywheels.html/", forceOnline: true },
+        { name: "Kart Bros", url: "https://daniezonsfusd.github.io/multi3/offline/kartbros.html/", forceOnline: true },
+        { name: "Basket Bros", url: "https://daniezonsfusd.github.io/multi3/offline/basketbros.html/", forceOnline: true },
+        { name: "Backrooms", url: "https://daniezonsfusd.github.io/multi3/offline/backrooms.html/", forceOnline: true },
+        { name: "Burrito Bison", url: "https://daniezonsfusd.github.io/BurritoBison", forceOnline: true },
+        { name: "Hole.Io", url: "https://daniezonsfusd.github.io/multi3/offline/holeio.html", forceOnline: true },
+        { name: "2D Grid PVP Beta", url: "https://daniezonsfusd.github.io/Testing/1.html" },
+        { name: "Super Liquid Soccer", url: "https://daniezonsfusd.github.io/SuperLiquidSoccer" },
+    ];
+
+    function setupStatusDashboard() {
+        const grid = document.getElementById('status-checker-grid');
+        if (!grid) return;
+        grid.innerHTML = gameData.map((game, i) => `
+            <div class="glass" style="display: flex; justify-content: space-between; padding: 20px; align-items: center; gap: 10px;">
+                <span style="font-weight: bold; flex: 1;">${game.name}</span>
+                <span id="stat-${i}" style="font-size: 0.8em; color: var(--secondary-text); font-weight: bold; background: rgba(0, 0, 0, 0.2); padding: 5px 10px; border-radius: 4px; white-space: nowrap;">Checking...</span>
+            </div>
+        `).join('');
+    }
+
+    async function pingURL(url) {
+        const controller = new AbortController();
+        setTimeout(() => controller.abort(), 10000);
+        try {
+            const res = await fetch(url + (url.includes('?') ? '&' : '?') + '_t=' + Date.now(), { signal: controller.signal });
+            const text = await res.text();
+            if (!res.ok) return false;
+            const low = text.toLowerCase();
+            return !(low.includes("<title>404") || low.includes("<h1>404") || low.includes("<h1>503") || low.includes("<title>503") || low.includes("<title>410") || low.includes("<h1>410") || low.includes("<title>not found"));
+        } catch { return false; }
+    }
+
+    async function runPingChecks() {
+        let offlineCount = 0;
+        for (let i = 0; i < gameData.length; i++) {
+            const game = gameData[i];
+            const badge = document.getElementById(`stat-${i}`);
+            if (!badge) continue;
+            if (game.forceOnline) {
+                badge.innerHTML = '<i class="fas fa-check-circle"></i> Online'; badge.style.color = '#4CAF50';
+            } else {
+                const online = await pingURL(game.url);
+                badge.innerHTML = online ? '<i class="fas fa-check-circle"></i> Online' : '<i class="fas fa-times-circle"></i> Offline';
+                badge.style.color = online ? '#4CAF50' : '#ff4757';
+                if (!online) offlineCount++;
+            }
+        }
+        updateMasterStatus(offlineCount);
+    }
+
+    function updateMasterStatus(offlineCount) {
+        const txt = document.getElementById('master-status');
+        const bar = document.getElementById('global-status-bar');
+        const dot = document.getElementById('global-dot');
+        if (!txt || !bar || !dot) return;
+        let label = '', col = '', cls = '';
+        if (offlineCount === 0) { label = 'All Systems Functional'; col = '#4CAF50'; cls = 'online'; }
+        else if (offlineCount <= 12) { label = 'Partially Online'; col = '#FFC107'; cls = 'partially-online'; }
+        else if (offlineCount <= 36) { label = 'Mostly Offline'; col = '#FF9800'; cls = 'mostly-offline'; }
+        else { label = 'Critical Outage'; col = '#ff4757'; cls = 'offline'; }
+        txt.textContent = label; txt.style.color = col; bar.style.borderLeftColor = col; dot.className = 'dot ' + cls;
+    }
+
+    async function checkSystemStatus() {
+        await runPingChecks();
+        document.getElementById('last-updated-time').textContent = `Verified: ${new Date().toLocaleTimeString()}`;
+    }
+
+    // --- Hotkeys Engine ---
+    document.onkeydown = (e) => {
+        if (e.key === '[') { document.getElementById('stealth-mode').style.display = 'block'; loadStealthPreset('math'); }
+        if (e.key === ']') closeStealthMode();
+        if (e.key === '/') { e.preventDefault(); searchInput.focus(); }
+        if (e.key.toLowerCase() === 'r' && document.activeElement !== searchInput && document.activeElement.tagName !== 'TEXTAREA' && document.activeElement.tagName !== 'INPUT') {
+            const visible = Array.from(gameCards).filter(c => c.style.display !== 'none');
+            if (visible.length > 0) window.location.href = visible[Math.floor(Math.random() * visible.length)].href;
+        }
+    };
+
+
+    // ── VISIT MILESTONE ──────────────────────────────────────────────────────
+    (function() {
+        const milestones = {
+            1:  { title: "👋 First Visit!", msg: "Welcome to DaniezOnSFUSD! Enjoy the games." },
+            5:  { title: "🔥 5 Visits!", msg: "You're becoming a regular. Respect." },
+            10: { title: "⭐ 10 Visits!", msg: "True regular energy. You know what's up." },
+            25: { title: "🏆 25 Visits!", msg: "Absolute legend status unlocked." },
+            50: { title: "💎 50 Visits!", msg: "You literally live here. We love you." },
+            100:{ title: "🐐 100 Visits!", msg: "The GOAT has arrived. Undeniable." },
+        };
+        let count = parseInt(localStorage.getItem('visitCount') || '0') + 1;
+        localStorage.setItem('visitCount', count);
+        const m = milestones[count];
+        if (m) {
+            const banner = document.getElementById('milestone-banner');
+            document.getElementById('milestone-title').textContent = m.title;
+            document.getElementById('milestone-msg').textContent = m.msg;
+            banner.style.display = 'block';
+            setTimeout(() => { banner.style.display = 'none'; }, 7000);
+        }
+    })();
+
+    // ── FAVORITES ────────────────────────────────────────────────────────────
+    function getFavs() { return JSON.parse(localStorage.getItem('favGames') || '[]'); }
+    function saveFavs(f) { localStorage.setItem('favGames', JSON.stringify(f)); }
+
+    function toggleFav(e, name, url) {
+        e.preventDefault(); e.stopPropagation();
+        let favs = getFavs();
+        const idx = favs.findIndex(f => f.name === name);
+        if (idx > -1) { favs.splice(idx, 1); } else { favs.push({ name, url }); }
+        saveFavs(favs);
+        renderFavs();
+        syncFavButtons();
+    }
+
+    function renderFavs() {
+        const favs = getFavs();
+        const section = document.getElementById('pinned-section');
+        const row = document.getElementById('pinned-row');
+        section.style.display = favs.length ? 'block' : 'none';
+        row.innerHTML = favs.map(f => `
+            <a href="${f.url}" class="pinned-card">
+                ⭐ ${f.name}
+                <button class="fav-btn active" onclick="toggleFav(event,'${f.name}','${f.url}')" title="Unpin"><i class="fas fa-star"></i></button>
+            </a>`).join('');
+    }
+
+    function syncFavButtons() {
+        const favs = getFavs();
+        document.querySelectorAll('.game-card .fav-btn').forEach(btn => {
+            const card = btn.closest('.game-card');
+            const name = card.getAttribute('data-name');
+            const isFaved = favs.some(f => f.name === name);
+            btn.classList.toggle('active', isFaved);
+        });
+    }
+
+    // ── GENRE FILTER ─────────────────────────────────────────────────────────
+    function filterGenre(genre) {
+        document.querySelectorAll('.genre-btn').forEach(b => b.classList.remove('active'));
+        event.target.classList.add('active');
+        const cards = document.querySelectorAll('.game-card');
+        let count = 0;
+        cards.forEach(card => {
+            const show = genre === 'all' || card.hasAttribute('data-genre-' + genre);
+            card.style.display = show ? 'flex' : 'none';
+            if (show) count++;
+        });
+        const el = document.getElementById('search-results-count');
+        if (el) el.textContent = count + ' assets loaded';
+    }
+
+    // ── RECENTLY PLAYED ──────────────────────────────────────────────────────
+    function getRecent() { return JSON.parse(localStorage.getItem('recentGames') || '[]'); }
+
+    function trackRecent(e, name, url) {
+        let recent = getRecent().filter(r => r.name !== name);
+        recent.unshift({ name, url });
+        if (recent.length > 5) recent = recent.slice(0, 5);
+        localStorage.setItem('recentGames', JSON.stringify(recent));
+        renderRecent();
+    }
+
+    function renderRecent() {
+        const recent = getRecent();
+        const section = document.getElementById('recent-section');
+        const row = document.getElementById('recent-row');
+        section.style.display = recent.length ? 'block' : 'none';
+        row.innerHTML = recent.map(r => `
+            <a href="${r.url}" class="recent-chip">
+                ${r.name}
+            </a>`).join('');
+    }
+
+    // ── VOTING BOARD ─────────────────────────────────────────────────────────
+    // ── VOTING CONFIG (edit here in the code only) ───────────────────────────
+    // To strike through an unreasonable entry, add its name (lowercase) to this array:
+    const STRUCK_ENTRIES = [
+        // example: "minecraft java edition",
+    ];
+    // To announce a winner, fill in the name and the month it won:
+    const VOTE_WINNER = {
+        name: "",        // e.g. "Friday Night Funkin"
+        month: "",       // e.g. "June 2026"
+        note: ""         // optional extra note, e.g. "Being added next update!"
+    };
+    // ─────────────────────────────────────────────────────────────────────────
+
+    function getVotes() { return JSON.parse(localStorage.getItem('gameVotes') || '[]'); }
+    function saveVotes(v) { localStorage.setItem('gameVotes', JSON.stringify(v)); }
+    function getMyVotes() { return JSON.parse(localStorage.getItem('myVotes') || '[]'); }
+
+    function submitVote() {
+        const input = document.getElementById('vote-input');
+        const name = input.value.trim();
+        if (!name) return;
+        let votes = getVotes();
+        const existing = votes.find(v => v.name.toLowerCase() === name.toLowerCase());
+        if (existing) { alert('That game is already on the list! Upvote it instead.'); input.value = ''; return; }
+        votes.push({ name, count: 1 });
+        saveVotes(votes);
+        const myVotes = getMyVotes();
+        myVotes.push(name.toLowerCase());
+        localStorage.setItem('myVotes', JSON.stringify(myVotes));
+        input.value = '';
+        renderVotes();
+    }
+
+    function upvote(name) {
+        const myVotes = getMyVotes();
+        if (myVotes.includes(name.toLowerCase())) return;
+        myVotes.push(name.toLowerCase());
+        localStorage.setItem('myVotes', JSON.stringify(myVotes));
+        let votes = getVotes();
+        const item = votes.find(v => v.name === name);
+        if (item) item.count++;
+        saveVotes(votes);
+        renderVotes();
+    }
+
+    function renderWinner() {
+        const banner = document.getElementById('vote-winner-banner');
+        if (!banner) return;
+        if (!VOTE_WINNER.name) { banner.classList.remove('visible'); return; }
+        banner.classList.add('visible');
+        document.getElementById('winner-title').textContent = VOTE_WINNER.month + ' Winner';
+        const note = VOTE_WINNER.note ? ' — ' + VOTE_WINNER.note : '';
+        document.getElementById('winner-body').innerHTML = '<strong>' + VOTE_WINNER.name + '</strong>' + note;
+    }
+
+    function renderVotes() {
+        const votes = getVotes().sort((a, b) => b.count - a.count);
+        const myVotes = getMyVotes();
+        const list = document.getElementById('vote-list');
+        if (!list) return;
+        const eligible = votes.filter(v => !STRUCK_ENTRIES.includes(v.name.toLowerCase()));
+        const maxVotes = eligible.length ? eligible[0].count : (votes.length ? votes[0].count : 1);
+        list.innerHTML = votes.length === 0
+            ? '<p style="opacity:0.5; text-align:center; padding:20px;">No requests yet. Be the first to suggest a game!</p>'
+            : votes.map(v => {
+                const struck = STRUCK_ENTRIES.includes(v.name.toLowerCase());
+                const voted = myVotes.includes(v.name.toLowerCase());
+                const pct = Math.round((v.count / maxVotes) * 100);
+                return '<div class="vote-item' + (struck ? ' vote-struck' : '') + '">' +
+                    '<span class="vote-count">' + v.count + '</span>' +
+                    '<span class="vote-name">' + v.name + '</span>' +
+                    (struck ? '<span class="vote-struck-label">Not Eligible</span>' : '') +
+                    '<div class="vote-bar-wrap"><div class="vote-bar" style="width:' + pct + '%"></div></div>' +
+                    (!struck ? '<button class="upvote-btn ' + (voted ? 'voted' : '') + '" onclick="upvote('' + v.name + '')">' + (voted ? '✓ Voted' : '▲ Upvote') + '</button>' : '') +
+                    '</div>';
+            }).join('');
+    }
+
+    // allow Enter key to submit vote
+    document.addEventListener('DOMContentLoaded', function() {
+        const vi = document.getElementById('vote-input');
+        if (vi) vi.addEventListener('keydown', e => { if (e.key === 'Enter') submitVote(); });
+    });
+
+    // ── INIT ALL NEW FEATURES ─────────────────────────────────────────────────
+    renderFavs();
+    syncFavButtons();
+    renderRecent();
+    renderVotes();
+    renderWinner();
+
+    // --- Initialization Execution ---
+    setupStatusDashboard(); 
+    renderTestingGrounds(); 
+    checkSystemStatus(); 
+    setInterval(checkSystemStatus, 300000);
+</script>             
+</body>
+</html>
