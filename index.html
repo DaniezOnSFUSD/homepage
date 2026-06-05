@@ -812,15 +812,12 @@ For inquiries regarding permission requests or commercial usage rights, contact 
 </div>
 
 <script>
-
-        // --- Testing Grounds Inventory ---
-    // If you have no games ready for beta testing, leave this array completely empty: []
-    // To add a game, follow this format: { name: "Game Title", url: "https://link.com", status: "Laggy" }
+    // --- Testing Grounds Inventory ---
     const testingGroundsData = [
         { 
             name: "2D Grid PvP Arena Beta", 
             url: "https://daniezonsfusd.github.io/Testing/1.html",
-            status: "BETA TESTING NOW" ,
+            status: "BETA TESTING NOW" 
         }
     ];
 
@@ -829,7 +826,6 @@ For inquiries regarding permission requests or commercial usage rights, contact 
         if (!testingGrid) return;
 
         if (testingGroundsData.length === 0) {
-            // Placeholder fallback layout when no builds are active
             testingGrid.style.gridTemplateColumns = "1fr";
             testingGrid.innerHTML = `
                 <div style="text-align: center; padding: 40px 20px; border: 1px dashed rgba(255, 255, 255, 0.1); border-radius: 16px; background: rgba(0,0,0,0.15);">
@@ -841,7 +837,6 @@ For inquiries regarding permission requests or commercial usage rights, contact 
                 </div>
             `;
         } else {
-            // Restore regular layout alignment if items are present
             testingGrid.style.gridTemplateColumns = "repeat(auto-fill, minmax(240px, 1fr))";
             testingGrid.innerHTML = testingGroundsData.map(game => `
                 <a href="${game.url}" class="card game-card" style="border-bottom: 3px solid #FFC107;">
@@ -945,7 +940,7 @@ For inquiries regarding permission requests or commercial usage rights, contact 
         { name: "GD Lite", url: "https://daniezonsfusd.github.io/Geometrydashlite" },
         { name: "GD Subzero", url: "https://daniezonsfusd.github.io/subzero" },
         { name: "GD Wave Challenge", url: "https://daniezonsfusd.github.io/multi3/offline/geometryvibes.html/", forceOnline: true },
-        { name: "Papas Pizzaeria", url: "https://daniezonsfusd.github.io/papas/papaspizza" },
+        { name: "Papas Pizzeria", url: "https://daniezonsfusd.github.io/papas/papaspizza" },
         { name: "Papas Freezeria", url: "https://daniezonsfusd.github.io/papas/papasfreezeria" },
         { name: "Papas Bakeria", url: "https://daniezonsfusd.github.io/papas/papasbakeria" },
         { name: "Papas Donuteria", url: "https://daniezonsfusd.github.io/papas/papasdonuteria" },
@@ -1063,7 +1058,6 @@ For inquiries regarding permission requests or commercial usage rights, contact 
         }
     };
 
-
     // ── VISIT MILESTONE ──────────────────────────────────────────────────────
     (function() {
         const milestones = {
@@ -1104,6 +1098,7 @@ For inquiries regarding permission requests or commercial usage rights, contact 
         const favs = getFavs();
         const section = document.getElementById('pinned-section');
         const row = document.getElementById('pinned-row');
+        if(!section || !row) return;
         section.style.display = favs.length ? 'block' : 'none';
         row.innerHTML = favs.map(f => `
             <a href="${f.url}" class="pinned-card">
@@ -1125,7 +1120,11 @@ For inquiries regarding permission requests or commercial usage rights, contact 
     // ── GENRE FILTER ─────────────────────────────────────────────────────────
     function filterGenre(genre) {
         document.querySelectorAll('.genre-btn').forEach(b => b.classList.remove('active'));
-        event.target.classList.add('active');
+        if(window.event && window.event.target) {
+            window.event.target.classList.add('active');
+        } else if (event && event.target) {
+            event.target.classList.add('active');
+        }
         const cards = document.querySelectorAll('.game-card');
         let count = 0;
         cards.forEach(card => {
@@ -1152,90 +1151,103 @@ For inquiries regarding permission requests or commercial usage rights, contact 
         const recent = getRecent();
         const section = document.getElementById('recent-section');
         const row = document.getElementById('recent-row');
+        if(!section || !row) return;
         section.style.display = recent.length ? 'block' : 'none';
         row.innerHTML = recent.map(r => `
             <a href="${r.url}" class="recent-chip">
-                ${r.name}
+                <i class="fas fa-history"></i> ${r.name}
             </a>`).join('');
     }
 
-    // ── VOTING BOARD ─────────────────────────────────────────────────────────
-    // ── VOTING CONFIG (edit here in the code only) ───────────────────────────
-    // To strike through an unreasonable entry, add its name (lowercase) to this array:
-    const STRUCK_ENTRIES = [
-        // example: "minecraft java edition",
+    // ── REQUEST VOTING PLATFORM ──────────────────────────────────────────────
+    let voteOptions = [
+        { name: "Roblox", count: 42 },
+        { name: "FNAF 5", count: 28 },
+        { name: "Minecraft 1.21", count: 19 },
+        { name: "Tunnel Rush", count: 12 },
+        { name: "Retro Bowl", count: 9 }
     ];
-    // To announce a winner, fill in the name and the month it won:
-    const VOTE_WINNER = {
-        name: "",        // e.g. "Friday Night Funkin"
-        month: "",       // e.g. "June 2026"
-        note: ""         // optional extra note, e.g. "Being added next update!"
-    };
-    // ─────────────────────────────────────────────────────────────────────────
 
-    function getVotes() { return JSON.parse(localStorage.getItem('gameVotes') || '[]'); }
-    function saveVotes(v) { localStorage.setItem('gameVotes', JSON.stringify(v)); }
-    function getMyVotes() { return JSON.parse(localStorage.getItem('myVotes') || '[]'); }
+    const struckAssets = ["roblox", "minecraft 1.21"];
+
+    function getVotes() {
+        const saved = localStorage.getItem('communityVotes');
+        if (saved) voteOptions = JSON.parse(saved);
+        return voteOptions;
+    }
 
     function submitVote() {
         const input = document.getElementById('vote-input');
+        if (!input) return;
         const name = input.value.trim();
         if (!name) return;
+        
         let votes = getVotes();
-        const existing = votes.find(v => v.name.toLowerCase() === name.toLowerCase());
-        if (existing) { alert('That game is already on the list! Upvote it instead.'); input.value = ''; return; }
-        votes.push({ name, count: 1 });
-        saveVotes(votes);
-        const myVotes = getMyVotes();
+        const match = votes.find(v => v.name.toLowerCase() === name.toLowerCase());
+        if (match) {
+            match.count++;
+        } else {
+            votes.push({ name: name, count: 1 });
+        }
+        
+        localStorage.setItem('communityVotes', JSON.stringify(votes));
+        let myVotes = JSON.parse(localStorage.getItem('myVotedAssets') || '[]');
         myVotes.push(name.toLowerCase());
-        localStorage.setItem('myVotes', JSON.stringify(myVotes));
+        localStorage.setItem('myVotedAssets', JSON.stringify(myVotes));
+        
         input.value = '';
         renderVotes();
+        renderWinner();
     }
 
-    function upvote(name) {
-        const myVotes = getMyVotes();
-        if (myVotes.includes(name.toLowerCase())) return;
-        myVotes.push(name.toLowerCase());
-        localStorage.setItem('myVotes', JSON.stringify(myVotes));
+    function upvote(assetName) {
         let votes = getVotes();
-        const item = votes.find(v => v.name === name);
-        if (item) item.count++;
-        saveVotes(votes);
-        renderVotes();
+        const match = votes.find(v => v.name.toLowerCase() === assetName.toLowerCase());
+        if (match) {
+            match.count++;
+            localStorage.setItem('communityVotes', JSON.stringify(votes));
+            let myVotes = JSON.parse(localStorage.getItem('myVotedAssets') || '[]');
+            myVotes.push(assetName.toLowerCase());
+            localStorage.setItem('myVotedAssets', JSON.stringify(myVotes));
+            renderVotes();
+            renderWinner();
+        }
     }
 
     function renderWinner() {
-        const banner = document.getElementById('vote-winner-banner');
-        if (!banner) return;
-        if (!VOTE_WINNER.name) { banner.classList.remove('visible'); return; }
-        banner.classList.add('visible');
-        document.getElementById('winner-title').textContent = VOTE_WINNER.month + ' Winner';
-        const note = VOTE_WINNER.note ? ' — ' + VOTE_WINNER.note : '';
-        document.getElementById('winner-body').innerHTML = '<strong>' + VOTE_WINNER.name + '</strong>' + note;
+        const votes = getVotes();
+        const eligible = votes.filter(v => !struckAssets.includes(v.name.toLowerCase()));
+        const winTitle = document.getElementById('winner-title');
+        if (!winTitle) return;
+        if (eligible.length === 0) {
+            winTitle.innerText = "TBD";
+            return;
+        }
+        eligible.sort((a,b) => b.count - a.count);
+        winTitle.innerText = eligible[0].name + " (" + eligible[0].count + " votes)";
     }
 
     function renderVotes() {
-        const votes = getVotes().sort((a, b) => b.count - a.count);
-        const myVotes = getMyVotes();
+        const votes = getVotes();
+        votes.sort((a,b) => b.count - a.count);
         const list = document.getElementById('vote-list');
         if (!list) return;
-        const eligible = votes.filter(v => !STRUCK_ENTRIES.includes(v.name.toLowerCase()));
-        const maxVotes = eligible.length ? eligible[0].count : (votes.length ? votes[0].count : 1);
-        list.innerHTML = votes.length === 0
-            ? '<p style="opacity:0.5; text-align:center; padding:20px;">No requests yet. Be the first to suggest a game!</p>'
-            : votes.map(v => {
-                const struck = STRUCK_ENTRIES.includes(v.name.toLowerCase());
-                const voted = myVotes.includes(v.name.toLowerCase());
-                const pct = Math.round((v.count / maxVotes) * 100);
-                return '<div class="vote-item' + (struck ? ' vote-struck' : '') + '">' +
-                    '<span class="vote-count">' + v.count + '</span>' +
-                    '<span class="vote-name">' + v.name + '</span>' +
-                    (struck ? '<span class="vote-struck-label">Not Eligible</span>' : '') +
-                    '<div class="vote-bar-wrap"><div class="vote-bar" style="width:' + pct + '%"></div></div>' +
-                    (!struck ? '<button class="upvote-btn ' + (voted ? 'voted' : '') + '" onclick="upvote('' + v.name + '')">' + (voted ? '✓ Voted' : '▲ Upvote') + '</button>' : '') +
-                    '</div>';
-            }).join('');
+        
+        const maxVotes = votes.length > 0 ? Math.max(...votes.map(v => v.count)) : 1;
+        const myVotes = JSON.parse(localStorage.getItem('myVotedAssets') || '[]');
+        
+        list.innerHTML = votes.map(v => {
+            const struck = struckAssets.includes(v.name.toLowerCase());
+            const voted = myVotes.includes(v.name.toLowerCase());
+            const pct = Math.round((v.count / maxVotes) * 100);
+            return '<div class="vote-item' + (struck ? ' vote-struck' : '') + '">' +
+                '<span class="vote-count">' + v.count + '</span>' +
+                '<span class="vote-name">' + v.name + '</span>' +
+                (struck ? '<span class="vote-struck-label">Not Eligible</span>' : '') +
+                '<div class="vote-bar-wrap"><div class="vote-bar" style="width:' + pct + '%"></div></div>' +
+                (!struck ? '<button class="upvote-btn ' + (voted ? 'voted' : '') + '" onclick="upvote(\'' + v.name.replace(/'/g, "\\'") + '\')">' + (voted ? '✓ Voted' : '▲ Upvote') + '</button>' : '') +
+                '</div>';
+        }).join('');
     }
 
     // allow Enter key to submit vote
@@ -1255,7 +1267,7 @@ For inquiries regarding permission requests or commercial usage rights, contact 
     setupStatusDashboard(); 
     renderTestingGrounds(); 
     checkSystemStatus(); 
-    setInterval(checkSystemStatus, 300000);
-</script>             
+    setInterval(checkSystemStatus, 60000);
+</script>
 </body>
 </html>
