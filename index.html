@@ -1135,14 +1135,18 @@ For inquiries regarding permission requests or commercial usage rights, contact 
 
     // ── VISIT MILESTONE ──────────────────────────────────────────────────────
     (function() {
-        const milestones = {
-            1:  { title: "👋 First Visit!", msg: "Welcome to DaniezOnSFUSD! Enjoy the games." },
-            5:  { title: "🔥 5 Visits!", msg: "You're becoming a regular. Respect." },
-            10: { title: "⭐ 10 Visits!", msg: "True regular energy. You know what's up." },
-            25: { title: "🏆 25 Visits!", msg: "Absolute legend status unlocked." },
-            50: { title: "💎 50 Visits!", msg: "You literally live here. We love you." },
-            100:{ title: "🐐 100 Visits!", msg: "The GOAT has arrived. Undeniable." },
-        };
+const milestones = {
+    1:     { title: "👋 First Visit!", msg: "Welcome to DaniezOnSFUSD! Enjoy the games." },
+    5:     { title: "🔥 5 Visits!", msg: "You're becoming a regular. Respect." },
+    10:    { title: "⭐ 10 Visits!", msg: "True regular energy. You know what's up." },
+    25:    { title: "🏆 25 Visits!", msg: "Absolute legend status unlocked." },
+    50:    { title: "💎 50 Visits!", msg: "You literally live here. We love you. Keep Going!" },
+    100:   { title: "🐐 100 Visits!", msg: "The GOAT has arrived. Undeniable. There's still more, keep going!" },
+    200:   { title: "👑 200 Visits!", msg: "You are built different. Certified site addict, but there's still more!" },
+    1000:  { title: "🚀 1,000 Visits!", msg: "One thousand visits. This is your second home at this point, but guess what, there's still more!" },
+    5000:  { title: "🌌 5,000 Visits!", msg: "5000 visits. You have ascended beyond human comprehension, but JUST KEEP GOING!" },
+    10000: { title: "💀 10,000 Visits!", msg: "10,000 visits. We don't even know what to say, we don't have more for you. Please go outside." },
+};
         let count = parseInt(localStorage.getItem('visitCount') || '0') + 1;
         localStorage.setItem('visitCount', count);
         const m = milestones[count];
@@ -1458,21 +1462,18 @@ For inquiries regarding permission requests or commercial usage rights, contact 
     }
 
     // ── 2. K-POP THEME → Floating idol photos ────────────────────────────────
-    // K-pop photos: fetched from a public open image search proxy
-    // Each entry is a direct image URL that allows hotlinking
     const KPOP_PHOTOS = [
-        // BTS - Grammy Museum exhibit photo (public domain/press)
-        'https://i.pinimg.com/736x/8a/2a/1a/8a2a1a7b8e2a1a7b8e2a1a7b8e2a1a7b.jpg',
+        'https://daniezonsfusd.github.io/homepage/assets/Aespa_Love_Your_W_2025_1.jpg',
         // Using picsum-style placeholder with kpop theming as fallback
         // Real approach: use Wikimedia with proper CORS proxy
-        'https://wsrv.nl/?url=upload.wikimedia.org/wikipedia/commons/thumb/0/0d/BTS_at_the_2019_Mnet_Asian_Music_Awards_%281%29.jpg/320px-BTS_at_the_2019_Mnet_Asian_Music_Awards_%281%29.jpg&w=200&h=200&fit=cover',
-        'https://wsrv.nl/?url=upload.wikimedia.org/wikipedia/commons/thumb/d/d4/IVE_at_Inkigayo_20220403.jpg/320px-IVE_at_Inkigayo_20220403.jpg&w=200&h=200&fit=cover',
-        'https://wsrv.nl/?url=upload.wikimedia.org/wikipedia/commons/thumb/8/87/ILLIT_at_2024_Mnet_Asian_Music_Awards.jpg/320px-ILLIT_at_2024_Mnet_Asian_Music_Awards.jpg&w=200&h=200&fit=cover',
-        'https://wsrv.nl/?url=upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Aespa_at_the_2022_Mnet_Asian_Music_Awards_%281%29.jpg/320px-Aespa_at_the_2022_Mnet_Asian_Music_Awards_%281%29.jpg&w=200&h=200&fit=cover',
-        'https://wsrv.nl/?url=upload.wikimedia.org/wikipedia/commons/thumb/6/68/NewJeans_at_2023_MAMA_Awards.jpg/320px-NewJeans_at_2023_MAMA_Awards.jpg&w=200&h=200&fit=cover',
-        'https://wsrv.nl/?url=upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Twice_at_KCON_2019.jpg/320px-Twice_at_KCON_2019.jpg&w=200&h=200&fit=cover',
-        'https://wsrv.nl/?url=upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Stray_Kids_at_2022_MAMA_Awards.jpg/320px-Stray_Kids_at_2022_MAMA_Awards.jpg&w=200&h=200&fit=cover',
-        'https://wsrv.nl/?url=upload.wikimedia.org/wikipedia/commons/thumb/5/5f/BLACKPINK_at_the_2022_MTV_VMAs.jpg/320px-BLACKPINK_at_the_2022_MTV_VMAs.jpg&w=200&h=200&fit=cover',
+        'https://daniezonsfusd.github.io/homepage/assets/fb.webp',
+        'https://daniezonsfusd.github.io/homepage/assets/images (12).jpeg',
+        'https://daniezonsfusd.github.io/homepage/assets/images (13).jpeg',
+        'https://daniezonsfusd.github.io/homepage/assets/images (14).jpeg',
+        'https://daniezonsfusd.github.io/homepage/assets/images (15).jpeg',
+        'https://daniezonsfusd.github.io/homepage/assets/images (16).jpeg',
+        'https://daniezonsfusd.github.io/homepage/assets/FiuBFnYaAAApd1M.jpg',
+        'https://daniezonsfusd.github.io/homepage/assets/a2125058-dd11-4aaa-b75b-b05370d6cc42.jpg',
     ];
 
     let kpopInterval = null;
@@ -1595,11 +1596,12 @@ For inquiries regarding permission requests or commercial usage rights, contact 
     // ── 8. TITLE BAR EASTER EGG (tab away and come back) ─────────────────────
     const normalTitle = document.title;
     const sneakyTitles = [
-        '👀 hey get back here',
-        '😭 the games miss you',
-        '🎮 bro come back',
-        '💀 who are you talking to',
-        '🐍 snek is sad',
+        'DaniezOnSFUSD | Community Homepage | 👀 hey get back here',
+        'DaniezOnSFUSD | Community Homepage | 😭 the games miss you',
+        'DaniezOnSFUSD | Community Homepage | 🎮 bro come back',
+        'DaniezOnSFUSD | Community Homepage | 💀 who are you talking to',
+        'DaniezOnSFUSD | Community Homepage | 🐍 snek is sad',
+        'DaniezOnSFUSD | Community Homepage | 🎥 ms.wagoner gotta hop off goguardian',
     ];
     let sneakyIdx = 0;
     document.addEventListener('visibilitychange', () => {
