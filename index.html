@@ -38,6 +38,55 @@
             background: linear-gradient(135deg, #e0e7ff 0%, #ffafcc 100%) fixed;
         }
 
+        /* ── K-Pop Photo Wall ── */
+        #kpop-wall { display:none; position:fixed; inset:0; z-index:99998; pointer-events:none; overflow:hidden; }
+        [data-theme="kpop"] #kpop-wall { display:block; }
+        .kpop-float { position:absolute; border-radius:16px; box-shadow:0 8px 32px rgba(255,175,204,0.4); border:3px solid rgba(255,175,204,0.6); opacity:0; animation: kpopFloat 12s ease-in-out infinite; pointer-events:none; object-fit:cover; }
+        @keyframes kpopFloat {
+            0%   { opacity:0; transform: translateY(0) rotate(var(--r)) scale(0.85); }
+            10%  { opacity:0.7; }
+            85%  { opacity:0.7; }
+            100% { opacity:0; transform: translateY(-110vh) rotate(calc(var(--r) + 15deg)) scale(1.05); }
+        }
+
+        /* ── Easter egg toast ── */
+        #egg-toast { display:none; position:fixed; bottom:30px; left:50%; transform:translateX(-50%); background:#1a1c22; color:#e0e0e0; border:1px solid var(--primary,#7289da); border-radius:14px; padding:14px 24px; z-index:99999; font-size:0.95em; font-weight:bold; white-space:nowrap; box-shadow:0 8px 24px rgba(0,0,0,0.5); animation: toastIn 0.35s ease; }
+        @keyframes toastIn { from { opacity:0; transform:translateX(-50%) translateY(10px); } to { opacity:1; transform:translateX(-50%) translateY(0); } }
+
+        /* ── Matrix rain canvas ── */
+        #matrix-canvas { display:none; position:fixed; inset:0; z-index:99997; pointer-events:none; opacity:0.18; }
+
+        /* ── Cursor trail ── */
+        .cursor-spark { position:fixed; pointer-events:none; width:8px; height:8px; border-radius:50%; z-index:99999; animation: sparkFade 0.6s ease forwards; }
+        @keyframes sparkFade { 0%{opacity:1;transform:scale(1);} 100%{opacity:0;transform:scale(0) translateY(-10px);} }
+
+        /* ── Snek surprise ── */
+        #snek-banner { display:none; position:fixed; top:0; left:0; right:0; background: linear-gradient(90deg,#55aa00,#3d8000); color:white; padding:12px; text-align:center; font-weight:900; font-size:1em; z-index:99999; letter-spacing:1px; }
+
+        /* ── K-Pop Photo Wall ── */
+        #kpop-wall { display:none; position:fixed; inset:0; z-index:99998; pointer-events:none; overflow:hidden; }
+        [data-theme="kpop"] #kpop-wall { display:block; }
+        .kpop-float { position:absolute; border-radius:16px; box-shadow:0 8px 32px rgba(255,175,204,0.4); border:3px solid rgba(255,175,204,0.6); opacity:0; animation: kpopFloat 12s ease-in-out infinite; pointer-events:none; object-fit:cover; }
+        @keyframes kpopFloat {
+            0%   { opacity:0; transform: translateY(0) rotate(var(--r)) scale(0.85); }
+            10%  { opacity:0.7; }
+            85%  { opacity:0.7; }
+            100% { opacity:0; transform: translateY(-110vh) rotate(calc(var(--r) + 15deg)) scale(1.05); }
+        }
+
+        /* ── Easter egg toast ── */
+        #egg-toast { display:none; position:fixed; bottom:30px; left:50%; transform:translateX(-50%); background:#1a1c22; color:#e0e0e0; border:1px solid var(--primary,#7289da); border-radius:14px; padding:14px 24px; z-index:99999; font-size:0.95em; font-weight:bold; white-space:nowrap; box-shadow:0 8px 24px rgba(0,0,0,0.5); animation: toastIn 0.35s ease; }
+        @keyframes toastIn { from { opacity:0; transform:translateX(-50%) translateY(10px); } to { opacity:1; transform:translateX(-50%) translateY(0); } }
+
+        /* ── Matrix rain ── */
+        #matrix-canvas { display:none; position:fixed; inset:0; z-index:99997; pointer-events:none; opacity:0.18; }
+
+        /* ── Cursor trail ── */
+        .cursor-spark { position:fixed; pointer-events:none; width:8px; height:8px; border-radius:50%; z-index:99999; animation: sparkFade 0.6s ease forwards; }
+        @keyframes sparkFade { 0%{opacity:1;transform:scale(1);} 100%{opacity:0;transform:scale(0) translateY(-10px);} }
+
+        /* ── Bouncing Eagler logo ── */
+
         body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); margin: 0; transition: background 0.3s, color 0.3s; overflow-x: hidden; }
         .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid var(--border); border-radius: 16px; }
         .badge { font-size: 10px; padding: 4px 8px; border-radius: 6px; text-transform: uppercase; font-weight: 900; margin-left: 8px; }
@@ -209,6 +258,12 @@
 </head>
 <body data-theme="dark">
 
+
+<!-- ── Easter Egg Elements ── -->
+<div id="egg-toast"></div>
+<canvas id="matrix-canvas"></canvas>
+<div id="snek-banner">🐍 SSSNEK MODE ACTIVATED — ALL HAIL THE ORIGINAL GAME 🐍 <button onclick="document.getElementById('snek-banner').style.display='none'" style="margin-left:20px;background:rgba(0,0,0,0.3);border:none;color:white;padding:4px 12px;border-radius:6px;cursor:pointer;font-weight:bold;">✕</button></div>
+<div id="kpop-wall"></div>
 
 <div id="milestone-banner">
     <h4 id="milestone-title">🎉 Welcome back!</h4>
@@ -708,11 +763,9 @@
             </div>
         </div>
 
-<div class="vote-disclaimer">
-    <strong>How this works:</strong> Use the request forms in the Community section to formally submit a game for consideration. The voting board lets the community weigh in on what gets added next. The top-voted game each month gets added — but entries that aren't feasible to add will be marked as ineligible.
-    <br><br>
-    <strong>⚠ Note:</strong> Votes are powered by Supabase (hosted on AWS). If the voting board isn't loading, their servers may be temporarily down — this is out of our control. Check back later!
-</div>
+        <div class="vote-disclaimer">
+            <strong>How this works:</strong> Use the request forms in the Community section to formally submit a game for consideration. The voting board lets the community weigh in on what gets added next. The top-voted game each month gets added — but entries that aren't feasible to add will be marked as ineligible.
+        </div>
 
         <div id="vote-input-row">
             <input id="vote-input" type="text" placeholder="Suggest a game (e.g. Friday Night Funkin)..." maxlength="60">
@@ -1055,13 +1108,22 @@ For inquiries regarding permission requests or commercial usage rights, contact 
     }
 
     // --- Hotkeys Engine ---
+    let _eggTypingRecently = false;
+    let _eggTypingTimer = null;
     document.onkeydown = (e) => {
         if (e.key === '[') { document.getElementById('stealth-mode').style.display = 'block'; loadStealthPreset('math'); }
         if (e.key === ']') closeStealthMode();
         if (e.key === '/') { e.preventDefault(); searchInput.focus(); }
-        if (e.key.toLowerCase() === 'r' && document.activeElement !== searchInput && document.activeElement.tagName !== 'TEXTAREA' && document.activeElement.tagName !== 'INPUT') {
+        // R key: only fire if user hasn't typed any letter recently (prevents conflict with easter egg words)
+        if (e.key.toLowerCase() === 'r' && document.activeElement !== searchInput && document.activeElement.tagName !== 'TEXTAREA' && document.activeElement.tagName !== 'INPUT' && !_eggTypingRecently) {
             const visible = Array.from(gameCards).filter(c => c.style.display !== 'none');
             if (visible.length > 0) window.location.href = visible[Math.floor(Math.random() * visible.length)].href;
+        }
+        // Mark typing as recent whenever any letter key is pressed (not just R)
+        if (e.key.length === 1 && e.key !== 'r' && e.key !== 'R') {
+            _eggTypingRecently = true;
+            clearTimeout(_eggTypingTimer);
+            _eggTypingTimer = setTimeout(() => { _eggTypingRecently = false; }, 1200);
         }
     };
 
@@ -1168,19 +1230,13 @@ For inquiries regarding permission requests or commercial usage rights, contact 
 
     // To strike through an unreasonable entry, add its name (lowercase) to this array:
     const STRUCK_ENTRIES = [
-        "minecraft 1.21",
-        "minecraft 26.1",
-        "minecraft 1.22",
-        "gta 6",
-        "daniel sucks toes",
-        "no he doesn't!",
         // example: "minecraft java edition",
     ];
     // To announce a winner, fill in the name and the month it won:
     const VOTE_WINNER = {
-        name: "test",        // e.g. "Friday Night Funkin"
-        month: "June 2026",       // e.g. "June 2026"
-        note: "this is a test winner thiss is not actually the winner!"         // optional extra note, e.g. "Being added next update!"
+        name: "",        // e.g. "Friday Night Funkin"
+        month: "",       // e.g. "June 2026"
+        note: ""         // optional extra note, e.g. "Being added next update!"
     };
     // ─────────────────────────────────────────────────────────────────────────
 
@@ -1273,6 +1329,264 @@ For inquiries regarding permission requests or commercial usage rights, contact 
         const vi = document.getElementById('vote-input');
         if (vi) vi.addEventListener('keydown', e => { if (e.key === 'Enter') submitVote(); });
     });
+
+
+    // ══════════════════════════════════════════════════════════════════════════
+    // ── EASTER EGGS ───────────────────────────────────────────────────────────
+    // ══════════════════════════════════════════════════════════════════════════
+
+    // ── Toast helper ─────────────────────────────────────────────────────────
+    function showEggToast(msg, duration = 3500) {
+        const t = document.getElementById('egg-toast');
+        t.textContent = msg;
+        t.style.display = 'block';
+        clearTimeout(t._timer);
+        t._timer = setTimeout(() => { t.style.display = 'none'; }, duration);
+    }
+
+    // ── 1. KONAMI CODE → Matrix rain ─────────────────────────────────────────
+    // ↑ ↑ ↓ ↓ ← → ← → B A
+    const KONAMI = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+    let konamiIdx = 0;
+    let matrixActive = false;
+    let matrixAnim = null;
+
+    function startMatrix() {
+        const canvas = document.getElementById('matrix-canvas');
+        canvas.style.display = 'block';
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        const ctx = canvas.getContext('2d');
+        const cols = Math.floor(canvas.width / 16);
+        const drops = Array(cols).fill(1);
+        matrixAnim = setInterval(() => {
+            ctx.fillStyle = 'rgba(0,0,0,0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#0f0';
+            ctx.font = '14px monospace';
+            drops.forEach((y, i) => {
+                const char = String.fromCharCode(0x30A0 + Math.random() * 96);
+                ctx.fillText(char, i * 16, y * 16);
+                if (y * 16 > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                drops[i]++;
+            });
+        }, 40);
+        showEggToast('🟩 MATRIX MODE ACTIVATED — press Escape to exit', 5000);
+    }
+
+    function stopMatrix() {
+        clearInterval(matrixAnim);
+        const canvas = document.getElementById('matrix-canvas');
+        canvas.style.display = 'none';
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    // ── 2. K-POP THEME → Floating idol photos ────────────────────────────────
+    // K-pop photos: fetched from a public open image search proxy
+    // Each entry is a direct image URL that allows hotlinking
+    const KPOP_PHOTOS = [
+        'https://daniezonsfusd.github.io/homepage/assets/Aespa_Love_Your_W_2025_1.jpg',
+        // Using picsum-style placeholder with kpop theming as fallback
+        // Real approach: use Wikimedia with proper CORS proxy
+        'https://daniezonsfusd.github.io/homepage/assets/FiuBFnYaAAApd1M.jpg',
+        'https://daniezonsfusd.github.io/homepage/assets/a2125058-dd11-4aaa-b75b-b05370d6cc42.jpg',
+        'https://daniezonsfusd.github.io/homepage/assets/fb.webp',
+        'https://daniezonsfusd.github.io/homepage/assets/images (12).jpeg',
+        'https://daniezonsfusd.github.io/homepage/assets/images (13).jpeg',
+        'https://daniezonsfusd.github.io/homepage/assets/images (14).jpeg',
+        'https://daniezonsfusd.github.io/homepage/assets/images (15).jpeg',
+        'https://daniezonsfusd.github.io/homepage/assets/images (16).jpeg',
+    ];
+
+    let kpopInterval = null;
+
+    function spawnKpopPhoto() {
+        const wall = document.getElementById('kpop-wall');
+        if (!wall || document.body.getAttribute('data-theme') !== 'kpop') return;
+        const img = document.createElement('img');
+        img.className = 'kpop-float';
+        img.src = KPOP_PHOTOS[Math.floor(Math.random() * KPOP_PHOTOS.length)];
+        const size = 120 + Math.random() * 100;
+        img.style.cssText = [
+            'width:' + size + 'px',
+            'height:' + size + 'px',
+            'left:' + (Math.random() * 90) + '%',
+            'top:' + (60 + Math.random() * 40) + 'vh',
+            '--r:' + (Math.random() * 20 - 10) + 'deg',
+            'animation-delay:' + (Math.random() * 2) + 's',
+            'animation-duration:' + (10 + Math.random() * 6) + 's',
+        ].join(';');
+        img.onerror = () => img.remove();
+        wall.appendChild(img);
+        setTimeout(() => img.remove(), 18000);
+    }
+
+    function startKpopWall() {
+        stopKpopWall();
+        spawnKpopPhoto();
+        kpopInterval = setInterval(spawnKpopPhoto, 1800);
+        showEggToast('💗 K-POP MODE — idols incoming!', 3000);
+    }
+    function stopKpopWall() {
+        clearInterval(kpopInterval);
+        document.getElementById('kpop-wall').innerHTML = '';
+    }
+
+    // Hook into setTheme to trigger kpop wall
+    const _origSetTheme = setTheme;
+    // We'll override setTheme after it's defined below via a wrapper
+
+    // ── 3. TYPE "daniezon" ANYWHERE → Confetti burst ─────────────────────────
+    let secretBuffer = '';
+    const SECRET_WORD = 'daniezon';
+    function fireConfetti() {
+        const colors = ['#7289da','#ffafcc','#55aa00','#FFD700','#ff4757','#9966cc'];
+        for (let i = 0; i < 80; i++) {
+            const el = document.createElement('div');
+            el.style.cssText = [
+                'position:fixed',
+                'left:' + (10 + Math.random() * 80) + 'vw',
+                'top:-20px',
+                'width:' + (6 + Math.random() * 8) + 'px',
+                'height:' + (6 + Math.random() * 8) + 'px',
+                'background:' + colors[Math.floor(Math.random() * colors.length)],
+                'border-radius:' + (Math.random() > 0.5 ? '50%' : '2px'),
+                'z-index:999999',
+                'pointer-events:none',
+                'animation:confettiFall ' + (1.5 + Math.random()) + 's ease-in forwards',
+                'animation-delay:' + (Math.random() * 0.5) + 's',
+            ].join(';');
+            document.body.appendChild(el);
+            setTimeout(() => el.remove(), 3000);
+        }
+        showEggToast("🎉 HEY THAT'S MY NAME!! 🎉", 3000);
+    }
+
+    // inject confetti keyframe
+    if (!document.getElementById('confetti-style')) {
+        const s = document.createElement('style');
+        s.id = 'confetti-style';
+        s.textContent = '@keyframes confettiFall { 0%{transform:translateY(0) rotate(0);opacity:1;} 100%{transform:translateY(110vh) rotate(720deg);opacity:0;} }';
+        document.head.appendChild(s);
+    }
+
+    // ── 4. TYPE "snek" ANYWHERE → Snek banner ────────────────────────────────
+    let snekBuffer = '';
+    function showSnekBanner() {
+        const b = document.getElementById('snek-banner');
+        b.style.display = 'block';
+        showEggToast('🐍 The original game demands respect', 2500);
+        setTimeout(() => { b.style.display = 'none'; }, 6000);
+    }
+
+    // ── 5. DVD BOUNCING LOGO (type "dvd") ────────────────────────────────────
+
+
+    // ── 6. CURSOR SPARK TRAIL (type "sparkle") ───────────────────────────────
+    let sparkBuffer = '';
+    let sparkActive = false;
+    const sparkColors = ['#7289da','#ffafcc','#FFD700','#ff4757','#55aa00'];
+
+    function handleSparkTrail(e) {
+        if (!sparkActive) return;
+        const el = document.createElement('div');
+        el.className = 'cursor-spark';
+        el.style.left = e.clientX - 4 + 'px';
+        el.style.top = e.clientY - 4 + 'px';
+        el.style.background = sparkColors[Math.floor(Math.random() * sparkColors.length)];
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), 600);
+    }
+
+    // ── 7. LOGO CLICK × 10 → Secret message ─────────────────────────────────
+    let logoClicks = 0;
+    let logoClickTimer = null;
+    function handleLogoClick() {
+        logoClicks++;
+        clearTimeout(logoClickTimer);
+        logoClickTimer = setTimeout(() => { logoClicks = 0; }, 2000);
+        if (logoClicks === 5)  showEggToast('👀 keep going...', 1500);
+        if (logoClicks >= 10) {
+            logoClicks = 0;
+            showEggToast('🏆 YOU FOUND IT: daniezonsfusd was here. respect. 🏆', 5000);
+            fireConfetti();
+        }
+    }
+    const navLogo = document.querySelector('nav img');
+    if (navLogo) navLogo.addEventListener('click', handleLogoClick);
+
+    // ── 8. TITLE BAR EASTER EGG (tab away and come back) ─────────────────────
+    const normalTitle = document.title;
+    const sneakyTitles = [
+        '👀 hey get back here',
+        '😭 the games miss you',
+        '🎮 bro come back',
+        '💀 who are you talking to',
+        '🐍 snek is sad',
+    ];
+    let sneakyIdx = 0;
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            document.title = sneakyTitles[sneakyIdx++ % sneakyTitles.length];
+        } else {
+            document.title = normalTitle;
+        }
+    });
+
+    // ── UNIFIED KEY BUFFER for typed secrets ─────────────────────────────────
+    document.addEventListener('keydown', function eggKeyHandler(e) {
+        if (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA') return;
+        const k = e.key.toLowerCase();
+
+        // Konami code
+        if (e.key === KONAMI[konamiIdx]) {
+            konamiIdx++;
+            if (konamiIdx >= KONAMI.length) {
+                konamiIdx = 0;
+                matrixActive = !matrixActive;
+                matrixActive ? startMatrix() : stopMatrix();
+            }
+        } else { konamiIdx = 0; }
+
+        // Escape kills matrix + dvd
+        if (e.key === 'Escape') {
+            stopMatrix(); matrixActive = false;
+            stopDVD(); dvdActive = false;
+        }
+
+        // Typed secrets — rolling 10-char buffer
+        secretBuffer = (secretBuffer + k).slice(-10);
+        snekBuffer   = (snekBuffer + k).slice(-6);
+        sparkBuffer  = (sparkBuffer + k).slice(-8);
+
+        if (secretBuffer.endsWith('daniezon')) fireConfetti();
+        if (snekBuffer.endsWith('snek'))       showSnekBanner();
+        if (sparkBuffer.endsWith('sparkle')) {
+            sparkActive = !sparkActive;
+            if (sparkActive) {
+                document.addEventListener('mousemove', handleSparkTrail);
+                showEggToast('✨ SPARKLE MODE ON — type "sparkle" again to turn off', 3000);
+            } else {
+                document.removeEventListener('mousemove', handleSparkTrail);
+                showEggToast('✨ sparkle mode off', 2000);
+            }
+        }
+    });
+
+    // ── KPOP WALL: hook onto theme changes ────────────────────────────────────
+    const _rawSetTheme = window.setTheme;
+    window.setTheme = function(name) {
+        _rawSetTheme(name);
+        if (name === 'kpop') { startKpopWall(); }
+        else { stopKpopWall(); }
+    };
+    // fire on page load if already kpop
+    if (document.body.getAttribute('data-theme') === 'kpop') startKpopWall();
+
+    // ══════════════════════════════════════════════════════════════════════════
+    // ── END EASTER EGGS ───────────────────────────────────────────────────────
+    // ══════════════════════════════════════════════════════════════════════════
 
     // ── INIT ALL NEW FEATURES ─────────────────────────────────────────────────
     renderFavs();
