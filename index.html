@@ -697,7 +697,7 @@
 
 
     <section id="voting-section" class="glass">
-        <h2 style="margin-top:0;">Monthly Game Vote <span class="monthly-badge">COMING SOON | I HAVE TO SET UP AWS INTERGRATION | DO NOT USE IT WILL ONLY SHOW ON YOUR SCREEN!</span></h2>
+        <h2 style="margin-top:0;">Monthly Game Vote <span class="monthly-badge">Monthly</span></h2>
         <p style="opacity:0.7; font-size:0.9em; margin-bottom:20px;">Every month, the most-voted game gets added to the library. Votes reset at the start of each month — so campaign hard!</p>
 
         <div id="vote-winner-banner">
@@ -714,7 +714,7 @@
 
         <div id="vote-input-row">
             <input id="vote-input" type="text" placeholder="Suggest a game (e.g. Friday Night Funkin)..." maxlength="60">
-            <button id="vote-submit" onclick="submitVote()">Submit | This feature is currently in progress your vote will only show on your screen!</button>
+            <button id="vote-submit" onclick="submitVote()">Submit</button>
         </div>
         <div id="vote-list"></div>
     </section>
@@ -812,7 +812,10 @@ For inquiries regarding permission requests or commercial usage rights, contact 
 </div>
 
 <script>
-    // --- Testing Grounds Inventory ---
+
+        // --- Testing Grounds Inventory ---
+    // If you have no games ready for beta testing, leave this array completely empty: []
+    // To add a game, follow this format: { name: "Game Title", url: "https://link.com", status: "Laggy" }
     const testingGroundsData = [
         { 
             name: "2D Grid PvP Arena Beta", 
@@ -826,6 +829,7 @@ For inquiries regarding permission requests or commercial usage rights, contact 
         if (!testingGrid) return;
 
         if (testingGroundsData.length === 0) {
+            // Placeholder fallback layout when no builds are active
             testingGrid.style.gridTemplateColumns = "1fr";
             testingGrid.innerHTML = `
                 <div style="text-align: center; padding: 40px 20px; border: 1px dashed rgba(255, 255, 255, 0.1); border-radius: 16px; background: rgba(0,0,0,0.15);">
@@ -837,6 +841,7 @@ For inquiries regarding permission requests or commercial usage rights, contact 
                 </div>
             `;
         } else {
+            // Restore regular layout alignment if items are present
             testingGrid.style.gridTemplateColumns = "repeat(auto-fill, minmax(240px, 1fr))";
             testingGrid.innerHTML = testingGroundsData.map(game => `
                 <a href="${game.url}" class="card game-card" style="border-bottom: 3px solid #FFC107;">
@@ -940,7 +945,7 @@ For inquiries regarding permission requests or commercial usage rights, contact 
         { name: "GD Lite", url: "https://daniezonsfusd.github.io/Geometrydashlite" },
         { name: "GD Subzero", url: "https://daniezonsfusd.github.io/subzero" },
         { name: "GD Wave Challenge", url: "https://daniezonsfusd.github.io/multi3/offline/geometryvibes.html/", forceOnline: true },
-        { name: "Papas Pizzeria", url: "https://daniezonsfusd.github.io/papas/papaspizza" },
+        { name: "Papas Pizzaeria", url: "https://daniezonsfusd.github.io/papas/papaspizza" },
         { name: "Papas Freezeria", url: "https://daniezonsfusd.github.io/papas/papasfreezeria" },
         { name: "Papas Bakeria", url: "https://daniezonsfusd.github.io/papas/papasbakeria" },
         { name: "Papas Donuteria", url: "https://daniezonsfusd.github.io/papas/papasdonuteria" },
@@ -1058,6 +1063,7 @@ For inquiries regarding permission requests or commercial usage rights, contact 
         }
     };
 
+
     // ── VISIT MILESTONE ──────────────────────────────────────────────────────
     (function() {
         const milestones = {
@@ -1098,7 +1104,6 @@ For inquiries regarding permission requests or commercial usage rights, contact 
         const favs = getFavs();
         const section = document.getElementById('pinned-section');
         const row = document.getElementById('pinned-row');
-        if(!section || !row) return;
         section.style.display = favs.length ? 'block' : 'none';
         row.innerHTML = favs.map(f => `
             <a href="${f.url}" class="pinned-card">
@@ -1120,11 +1125,7 @@ For inquiries regarding permission requests or commercial usage rights, contact 
     // ── GENRE FILTER ─────────────────────────────────────────────────────────
     function filterGenre(genre) {
         document.querySelectorAll('.genre-btn').forEach(b => b.classList.remove('active'));
-        if(window.event && window.event.target) {
-            window.event.target.classList.add('active');
-        } else if (event && event.target) {
-            event.target.classList.add('active');
-        }
+        event.target.classList.add('active');
         const cards = document.querySelectorAll('.game-card');
         let count = 0;
         cards.forEach(card => {
@@ -1151,103 +1152,112 @@ For inquiries regarding permission requests or commercial usage rights, contact 
         const recent = getRecent();
         const section = document.getElementById('recent-section');
         const row = document.getElementById('recent-row');
-        if(!section || !row) return;
         section.style.display = recent.length ? 'block' : 'none';
         row.innerHTML = recent.map(r => `
             <a href="${r.url}" class="recent-chip">
-                <i class="fas fa-history"></i> ${r.name}
+                ${r.name}
             </a>`).join('');
     }
 
-    // ── REQUEST VOTING PLATFORM ──────────────────────────────────────────────
-    let voteOptions = [
-        { name: "coming soon", count: 42 },
-        { name: "coming soon", count: 28 },
-        { name: "coming soon", count: 19 },
-        { name: "coming soon", count: 12 },
-        { name: "coming soon", count: 9 }
+    // ── VOTING BOARD ─────────────────────────────────────────────────────────
+    // ── VOTING CONFIG (edit here in the code only) ───────────────────────────
+    const SUPABASE_URL = 'https://atqrgxctvbsdupbwhxgc.supabase.co';
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF0cXJneGN0dmJzZHVwYndoeGdjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2MjkyNjMsImV4cCI6MjA5NjIwNTI2M30.xjkq6Y4LRYFa9NR7F16HQB74rao98aDqiA2p_1ZE26M';
+
+    // To strike through an unreasonable entry, add its name (lowercase) to this array:
+    const STRUCK_ENTRIES = "minecraft 1.21", "minecraft 26.1", "minecraft 1.22",
+        // example: "minecraft java edition",
     ];
+    // To announce a winner, fill in the name and the month it won:
+    const VOTE_WINNER = {
+        name: "",        // e.g. "Friday Night Funkin"
+        month: "",       // e.g. "June 2026"
+        note: ""         // optional extra note, e.g. "Being added next update!"
+    };
+    // ─────────────────────────────────────────────────────────────────────────
 
-    const struckAssets = ["coming soon", "coming soon"];
+    const SB_HEADERS = {
+        'apikey': SUPABASE_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_KEY,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=representation'
+    };
 
-    function getVotes() {
-        const saved = localStorage.getItem('communityVotes');
-        if (saved) voteOptions = JSON.parse(saved);
-        return voteOptions;
+    function getMyVotes() { return JSON.parse(localStorage.getItem('myVotes') || '[]'); }
+
+    async function fetchVotes() {
+        try {
+            const res = await fetch(SUPABASE_URL + '/rest/v1/votes?order=count.desc', { headers: SB_HEADERS });
+            return await res.json();
+        } catch(e) { return []; }
     }
 
-    function submitVote() {
+    async function submitVote() {
         const input = document.getElementById('vote-input');
-        if (!input) return;
         const name = input.value.trim();
         if (!name) return;
-        
-        let votes = getVotes();
-        const match = votes.find(v => v.name.toLowerCase() === name.toLowerCase());
-        if (match) {
-            match.count++;
-        } else {
-            votes.push({ name: name, count: 1 });
-        }
-        
-        localStorage.setItem('communityVotes', JSON.stringify(votes));
-        let myVotes = JSON.parse(localStorage.getItem('myVotedAssets') || '[]');
+        const votes = await fetchVotes();
+        const existing = votes.find(v => v.name.toLowerCase() === name.toLowerCase());
+        if (existing) { alert('That game is already on the list! Upvote it instead.'); input.value = ''; return; }
+        await fetch(SUPABASE_URL + '/rest/v1/votes', {
+            method: 'POST',
+            headers: SB_HEADERS,
+            body: JSON.stringify({ name: name, count: 1 })
+        });
+        const myVotes = getMyVotes();
         myVotes.push(name.toLowerCase());
-        localStorage.setItem('myVotedAssets', JSON.stringify(myVotes));
-        
+        localStorage.setItem('myVotes', JSON.stringify(myVotes));
         input.value = '';
-        renderVotes();
-        renderWinner();
+        await renderVotes();
     }
 
-    function upvote(assetName) {
-        let votes = getVotes();
-        const match = votes.find(v => v.name.toLowerCase() === assetName.toLowerCase());
-        if (match) {
-            match.count++;
-            localStorage.setItem('communityVotes', JSON.stringify(votes));
-            let myVotes = JSON.parse(localStorage.getItem('myVotedAssets') || '[]');
-            myVotes.push(assetName.toLowerCase());
-            localStorage.setItem('myVotedAssets', JSON.stringify(myVotes));
-            renderVotes();
-            renderWinner();
-        }
+    async function upvote(name) {
+        const myVotes = getMyVotes();
+        if (myVotes.includes(name.toLowerCase())) return;
+        const votes = await fetchVotes();
+        const item = votes.find(v => v.name === name);
+        if (!item) return;
+        await fetch(SUPABASE_URL + '/rest/v1/votes?name=eq.' + encodeURIComponent(name), {
+            method: 'PATCH',
+            headers: SB_HEADERS,
+            body: JSON.stringify({ count: item.count + 1 })
+        });
+        myVotes.push(name.toLowerCase());
+        localStorage.setItem('myVotes', JSON.stringify(myVotes));
+        await renderVotes();
     }
 
     function renderWinner() {
-        const votes = getVotes();
-        const eligible = votes.filter(v => !struckAssets.includes(v.name.toLowerCase()));
-        const winTitle = document.getElementById('winner-title');
-        if (!winTitle) return;
-        if (eligible.length === 0) {
-            winTitle.innerText = "TBD";
-            return;
-        }
-        eligible.sort((a,b) => b.count - a.count);
-        winTitle.innerText = eligible[0].name + " (" + eligible[0].count + " votes)";
+        const banner = document.getElementById('vote-winner-banner');
+        if (!banner) return;
+        if (!VOTE_WINNER.name) { banner.classList.remove('visible'); return; }
+        banner.classList.add('visible');
+        document.getElementById('winner-title').textContent = VOTE_WINNER.month + ' Winner';
+        const note = VOTE_WINNER.note ? ' — ' + VOTE_WINNER.note : '';
+        document.getElementById('winner-body').innerHTML = '<strong>' + VOTE_WINNER.name + '</strong>' + note;
     }
 
-    function renderVotes() {
-        const votes = getVotes();
-        votes.sort((a,b) => b.count - a.count);
+    async function renderVotes() {
+        const votes = await fetchVotes();
+        const myVotes = getMyVotes();
         const list = document.getElementById('vote-list');
         if (!list) return;
-        
-        const maxVotes = votes.length > 0 ? Math.max(...votes.map(v => v.count)) : 1;
-        const myVotes = JSON.parse(localStorage.getItem('myVotedAssets') || '[]');
-        
-        list.innerHTML = votes.map(v => {
-            const struck = struckAssets.includes(v.name.toLowerCase());
-            const voted = myVotes.includes(v.name.toLowerCase());
-            const pct = Math.round((v.count / maxVotes) * 100);
-            return '<div class="vote-item' + (struck ? ' vote-struck' : '') + '">' +
-                '<span class="vote-count">' + v.count + '</span>' +
-                '<span class="vote-name">' + v.name + '</span>' +
-                (struck ? '<span class="vote-struck-label">Not Eligible</span>' : '') +
-                '<div class="vote-bar-wrap"><div class="vote-bar" style="width:' + pct + '%"></div></div>' +
-                (!struck ? '<button class="upvote-btn ' + (voted ? 'voted' : '') + '" onclick="upvote(\'' + v.name.replace(/'/g, "\\'") + '\')">' + (voted ? '✓ Voted' : '▲ Upvote') + '</button>' : '') +
-                '</div>';
-        }).join('');
+        const eligible = votes.filter(v => !STRUCK_ENTRIES.includes(v.name.toLowerCase()));
+        const maxVotes = eligible.length ? eligible[0].count : (votes.length ? votes[0].count : 1);
+        list.innerHTML = votes.length === 0
+            ? '<p style="opacity:0.5; text-align:center; padding:20px;">No requests yet. Be the first to suggest a game!</p>'
+            : votes.map(v => {
+                const struck = STRUCK_ENTRIES.includes(v.name.toLowerCase());
+                const voted = myVotes.includes(v.name.toLowerCase());
+                const pct = Math.round((v.count / maxVotes) * 100);
+                return '<div class="vote-item' + (struck ? ' vote-struck' : '') + '">' +
+                    '<span class="vote-count">' + v.count + '</span>' +
+                    '<span class="vote-name">' + v.name + '</span>' +
+                    (struck ? '<span class="vote-struck-label">Not Eligible</span>' : '') +
+                    '<div class="vote-bar-wrap"><div class="vote-bar" style="width:' + pct + '%"></div></div>' +
+                    (!struck ? '<button class="upvote-btn ' + (voted ? 'voted' : '') + '" onclick="upvote(&apos;' + v.name.replace(/'/g, '') + '&apos;)">' + (voted ? '✓ Voted' : '▲ Upvote') + '</button>' : '') +
+                    '</div>';
+            }).join('');
     }
 
     // allow Enter key to submit vote
@@ -1267,7 +1277,7 @@ For inquiries regarding permission requests or commercial usage rights, contact 
     setupStatusDashboard(); 
     renderTestingGrounds(); 
     checkSystemStatus(); 
-    setInterval(checkSystemStatus, 60000);
-</script>
+    setInterval(checkSystemStatus, 300000);
+</script>             
 </body>
 </html>
