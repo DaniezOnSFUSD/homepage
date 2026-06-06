@@ -1178,6 +1178,7 @@ const milestones = {
         const favs = getFavs();
         const section = document.getElementById('pinned-section');
         const row = document.getElementById('pinned-row');
+        if (!section || !row) return;
         section.style.display = favs.length ? 'block' : 'none';
         row.innerHTML = favs.map(f => `
             <a href="${f.url}" class="pinned-card">
@@ -1226,6 +1227,7 @@ const milestones = {
         const recent = getRecent();
         const section = document.getElementById('recent-section');
         const row = document.getElementById('recent-row');
+        if (!section || !row) return;
         section.style.display = recent.length ? 'block' : 'none';
         row.innerHTML = recent.map(r => `
             <a href="${r.url}" class="recent-chip">
