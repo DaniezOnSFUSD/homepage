@@ -187,6 +187,18 @@
         .fav-btn:hover { transform: scale(1.2); }
         .fav-btn.active { color: #FFD700; }
         .card { position: relative; }
+
+        /* ── Game of the Day ── */
+        #gotd-section { margin-bottom: 30px; }
+        #gotd-card { display: flex; align-items: center; gap: 20px; padding: 20px 28px; background: linear-gradient(135deg, rgba(114,137,218,0.1) 0%, rgba(153,102,204,0.06) 100%); border: 1px solid rgba(114,137,218,0.35); border-radius: 18px; text-decoration: none; color: var(--text); transition: transform 0.2s, box-shadow 0.2s; position: relative; overflow: hidden; }
+        #gotd-card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(114,137,218,0.15); }
+        #gotd-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--primary), var(--amethyst)); }
+        .gotd-icon { font-size: 2em; flex-shrink: 0; }
+        .gotd-info { flex: 1; }
+        .gotd-label { font-size: 0.72em; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em; color: var(--primary); margin-bottom: 4px; }
+        .gotd-name { font-size: 1.2em; font-weight: 900; margin: 0 0 4px; }
+        .gotd-date { font-size: 0.78em; color: var(--secondary-text); }
+        .gotd-play { padding: 10px 22px; background: var(--primary); color: white; border-radius: 10px; font-weight: bold; font-size: 0.85em; white-space: nowrap; flex-shrink: 0; }
         #pinned-section { margin-bottom: 30px; }
         #pinned-row { display: flex; flex-wrap: wrap; gap: 12px; }
         #pinned-section h3 { margin: 0 0 12px; font-size: 1em; color: var(--secondary-text); text-transform: uppercase; letter-spacing: 1px; }
@@ -357,6 +369,18 @@
             <span>Network Status: <span id="master-status" style="color: var(--primary);">All Systems Functional</span></span>
         </div>
         <div id="last-updated-time" style="opacity: 0.6; font-size: 0.9em;">Updated: Pinging...</div>
+    </div>
+
+    <div id="gotd-section">
+        <a id="gotd-card" href="#" onclick="return false;">
+            <div class="gotd-icon">🎮</div>
+            <div class="gotd-info">
+                <div class="gotd-label">⭐ Game of the Day</div>
+                <div class="gotd-name" id="gotd-name">Loading...</div>
+                <div class="gotd-date" id="gotd-date"></div>
+            </div>
+            <div class="gotd-play">Play Now →</div>
+        </a>
     </div>
 
     <div id="pinned-section" style="display:none;">
@@ -1160,6 +1184,78 @@ const milestones = {
         }
     })();
 
+
+    // ── GAME OF THE DAY ───────────────────────────────────────────────────────
+    const GOTD_GAMES = [
+        { name: 'Eaglercraft 1.20',    url: 'https://daniezonsfusd.github.io/1.20' },
+        { name: 'Resent Client',       url: 'https://daniezonsfusd.github.io/1.8' },
+        { name: 'Bee Swarm',           url: 'https://daniezonsfusd.github.io/beeswarm' },
+        { name: 'GD Lite',             url: 'https://daniezonsfusd.github.io/Geometrydashlite' },
+        { name: 'GD Subzero',          url: 'https://daniezonsfusd.github.io/subzero' },
+        { name: 'GD Wave Challenge',   url: 'https://daniezonsfusd.github.io/multi3/offline/geometryvibes.html' },
+        { name: 'Geometry Dash',       url: 'https://daniezonsfusd.github.io/GDNorm' },
+        { name: "Papa's Pizzeria",     url: 'https://daniezonsfusd.github.io/papas/papaspizza' },
+        { name: "Papa's Freezeria",    url: 'https://daniezonsfusd.github.io/papas/papasfreezeria' },
+        { name: "Papa's Bakeria",      url: 'https://daniezonsfusd.github.io/papas/papasbakeria' },
+        { name: "Papa's Donuteria",    url: 'https://daniezonsfusd.github.io/papas/papasdonuteria' },
+        { name: "Papa's Burgeria",     url: 'https://daniezonsfusd.github.io/papas/papasburgeria' },
+        { name: 'Abduction!',          url: 'https://daniezonsfusd.github.io/abduction/abduction' },
+        { name: '8 Ball Pool',         url: 'https://daniezonsfusd.github.io/8ballpool' },
+        { name: 'Slope',               url: 'https://daniezonsfusd.github.io/Slope' },
+        { name: 'BitLife',             url: 'https://daniezonsfusd.github.io/bitlife' },
+        { name: 'FNAF',                url: 'https://daniezonsfusd.github.io/multi3/offline/fnaf.html' },
+        { name: 'FNAF 2',              url: 'https://daniezonsfusd.github.io/multi3/offline/fnaf2.html' },
+        { name: 'FNAF 3',              url: 'https://daniezonsfusd.github.io/multi3/offline/fnaf3.html' },
+        { name: 'FNAF 4',              url: 'https://daniezonsfusd.github.io/multi3/offline/fnaf4.html' },
+        { name: 'Snek',                url: 'https://daniezonsfusd.github.io/snek/' },
+        { name: "Baldi's Basics",      url: 'https://daniezonsfusd.github.io/baldi' },
+        { name: 'Boba Simulator',      url: 'https://daniezonsfusd.github.io/bobasim' },
+        { name: 'Among Us',            url: 'https://daniezonsfusd.github.io/multi2/games/amongus' },
+        { name: 'Appel',               url: 'https://daniezonsfusd.github.io/multi2/games/appel' },
+        { name: 'Atari Breakout',      url: 'https://daniezonsfusd.github.io/multi2/games/breakout' },
+        { name: 'Cookie Clicker',      url: 'https://daniezonsfusd.github.io/multi2/games/cookieclicker' },
+        { name: 'CubeField',           url: 'https://daniezonsfusd.github.io/multi2/games/cubefield' },
+        { name: 'DeathRun 3D',         url: 'https://daniezonsfusd.github.io/multi2/games/deathrun3d' },
+        { name: 'DigDug',              url: 'https://daniezonsfusd.github.io/multi2/games/digdug' },
+        { name: 'Flappy Bird',         url: 'https://daniezonsfusd.github.io/multi2/games/flappybird' },
+        { name: 'Getting Over It',     url: 'https://daniezonsfusd.github.io/multi2/games/gettingoverit' },
+        { name: 'Run 3',               url: 'https://daniezonsfusd.github.io/multi2/games/run3' },
+        { name: 'Subway Surfers',      url: 'https://daniezonsfusd.github.io/multi2/games/subwaysurfers' },
+        { name: 'Shell Shockers',      url: 'https://daniezonsfusd.github.io/multi2/games/shellshockers' },
+        { name: 'PolyTrack',           url: 'https://daniezonsfusd.github.io/multi3/offline/polytrack.html' },
+        { name: 'Escape Road City 2',  url: 'https://daniezonsfusd.github.io/homepage/ESCAPE.html' },
+        { name: 'Ten Minutes Till Dawn', url: 'https://daniezonsfusd.github.io/10-min-til-dawn/10-minutes-till-dawn' },
+        { name: 'Bad Parenting',       url: 'https://daniezonsfusd.github.io/multi3/offline/badparenting.html' },
+        { name: 'Crossy Roads',        url: 'https://daniezonsfusd.github.io/multi3/offline/crossyroad.htm' },
+        { name: 'Drift Boss',          url: 'https://daniezonsfusd.github.io/multi3/offline/driftboss.htm' },
+        { name: 'Granny',              url: 'https://daniezonsfusd.github.io/multi3/offline/granny.html' },
+        { name: 'Granny 2',            url: 'https://daniezonsfusd.github.io/multi3/offline/granny2.html' },
+        { name: 'Happy Wheels',        url: 'https://daniezonsfusd.github.io/multi3/offline/happywheels.html' },
+        { name: 'Kart Bros',           url: 'https://daniezonsfusd.github.io/multi3/offline/kartbros.html' },
+        { name: 'Backrooms',           url: 'https://daniezonsfusd.github.io/multi3/offline/backrooms.html' },
+        { name: 'Hole.io',             url: 'https://daniezonsfusd.github.io/multi3/offline/holeio.html' },
+        { name: 'Burrito Bison',       url: 'https://daniezonsfusd.github.io/BurritoBison' },
+        { name: 'Super Liquid Soccer', url: 'https://daniezonsfusd.github.io/SuperLiquidSoccer' },
+    ];
+
+    function renderGOTD() {
+        // Seed by date so everyone gets the same game each day
+        const now = new Date();
+        const seed = now.getFullYear() * 10000 + (now.getMonth() + 1) * 100 + now.getDate();
+        const idx = seed % GOTD_GAMES.length;
+        const game = GOTD_GAMES[idx];
+
+        const card = document.getElementById('gotd-card');
+        const nameEl = document.getElementById('gotd-name');
+        const dateEl = document.getElementById('gotd-date');
+        if (!card || !nameEl || !dateEl) return;
+
+        nameEl.textContent = game.name;
+        card.href = game.url;
+        card.onclick = null;
+        dateEl.textContent = now.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+    }
+
     // ── FAVORITES ────────────────────────────────────────────────────────────
     function getFavs() { return JSON.parse(localStorage.getItem('favGames') || '[]'); }
     function saveFavs(f) { localStorage.setItem('favGames', JSON.stringify(f)); }
@@ -1682,6 +1778,7 @@ const milestones = {
     }
     // ── INIT ALL NEW FEATURES ─────────────────────────────────────────────────
     updateDisclaimerRateLimit();
+    renderGOTD();
     renderFavs();
     syncFavButtons();
     renderRecent();
