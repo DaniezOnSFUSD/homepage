@@ -13,7 +13,7 @@
 ### License and Intellectual Property
 This project is Source-Available but is NOT Open Source.
 
-Copyright (c) 2026 DaniezOnSFUSD. All Rights Reserved.
+Copyright (c) 2025-2026 DaniezOnSFUSD. All Rights Reserved.
 
 Proprietary Components: All original UI/UX design, site architecture, and custom source code are the exclusive intellectual property of DaniezonSFUSD. While the code is public for transparency and personal forking within the GitHub ecosystem, these components are not for redistribution, mirroring, or commercial exploitation.
 
