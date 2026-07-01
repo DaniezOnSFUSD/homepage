@@ -1,44 +1,48 @@
-PROPRIETARY LICENSE AGREEMENT Copyright (c) 2025-2026 DaniezOnSFUSD. All Rights Reserved. 
-------------------------------------------------------------------------------- 
+# PROPRIETARY LICENSE AGREEMENT
 
-I. MANDATORY NOTICE RETENTION AND ATTRIBUTION
+**Copyright (c) 2025-2026 DaniezOnSFUSD. All Rights Reserved.**
+
+---
+
+### I. MANDATORY NOTICE RETENTION AND ATTRIBUTION
 THIS CONDITION IS A MATERIAL TERM OF THIS AGREEMENT. Subject to the permissions granted herein, any and all permitted copies, forks, or partial redistributions of the Proprietary Components must strictly adhere to the following:
-* Retention of Copyright: The original copyright notice—Copyright (c) 2025-2026 DaniezOnSFUSD. All Rights Reserved.—must remain intact and clearly visible in all source files and repositories.
-* License Inclusion: A complete, unaltered copy of this LICENSE file must be included in the root directory of any fork or copy.
-* Source Attribution: A prominent link or reference back to the original source repository hosted by DaniezOnSFUSD must be maintained in the project documentation (e.g., https://github.com). Failure to include these notices constitutes a material breach of contract, renders the license null and void ab initio, and constitutes unauthorized copyright infringement.
+* **Retention of Copyright:** The original copyright notice—*Copyright (c) 2025-2026 DaniezOnSFUSD. All Rights Reserved.*—must remain intact and clearly visible in all source files and repositories.
+* **License Inclusion:** A complete, unaltered copy of this LICENSE file must be included in the root directory of any fork or copy.
+* **Source Attribution:** A prominent link or reference back to the original source repository hosted by DaniezOnSFUSD must be maintained in the project documentation (e.g., https://github.com). Failure to include these notices constitutes a material breach of contract, renders the license null and void *ab initio*, and constitutes unauthorized copyright infringement.
 
-II. DEFINITIONS AND SCOPE OF JURISDICTION
+### II. DEFINITIONS AND SCOPE OF JURISDICTION
 This Agreement constitutes a legally binding contractual instrument between the Licensee (hereafter "the User") and DaniezOnSFUSD (hereafter "the Licensor"). This Agreement governs the "Proprietary Components," defined as:
-* Architectural Logic: Unique directory hierarchies, navigational schematics, and structural metadata.
-* Codebase: All custom HTML5, CSS3, ECMAScript-compliant JavaScript, and backend logic facilitating the User Interface (UI).
-* Visual Assets: Proprietary iconography, trade dress, vector graphics, and branding motifs.
+* **Architectural Logic:** Unique directory hierarchies, navigational schematics, and structural metadata.
+* **Codebase:** All custom HTML5, CSS3, ECMAScript-compliant JavaScript, and backend logic facilitating the User Interface (UI).
+* **Visual Assets:** Proprietary iconography, trade dress, vector graphics, and branding motifs.
 
-III. THIRD-PARTY ASSET ATTRIBUTION AND INDEMNIFICATION
+### III. THIRD-PARTY ASSET ATTRIBUTION AND INDEMNIFICATION
 The repository incorporates distinct "Third-Party Modules" (including but not limited to Slope, Papa’s Gamerias, and EaglerCraft).
-* Retention of Title: Licensor asserts no claim of ownership over assets authored by RenzorsRevenge1, Flipline Studios, Armor Games, lax1dude, chocofush, elite4r, or associated entities.
-* External Governance: User interaction with Third-Party Modules is subject to the respective End User License Agreements (EULA) of the original creators. The Licensor is held harmless against any claims arising from the User's misuse of these materials.
+* **Retention of Title:** Licensor asserts no claim of ownership over assets authored by RenzorsRevenge1, Flipline Studios, Armor Games, lax1dude, chocofush, elite4r, or associated entities.
+* **External Governance:** User interaction with Third-Party Modules is subject to the respective End User License Agreements (EULA) of the original creators. The Licensor is held harmless against any claims arising from the User's misuse of these materials.
 
-IV. RESTRICTIVE GRANT OF NON-TRANSFERABLE LICENSE
+### IV. RESTRICTIVE GRANT OF NON-TRANSFERABLE LICENSE
 Subject to the condition precedent of strict adherence to Section I and the GitHub Terms of Service (ToS), the Licensor grants a Limited, Revocable, Non-Sublicensable, and Non-Exclusive License to:
 * Render and inspect the Proprietary Components via the GitHub web interface.
 * Execute a "Fork" within the GitHub ecosystem for strictly non-commercial, personal, and archival purposes.
 
-V. COVENANTS AND PROHIBITED EXPLOITATIONS
-Any exercise of rights not explicitly enumerated in Section IV is strictly ultra vires. The User is perpetually enjoined from:
-* Unauthorized Replication: Mirroring or deployment of Proprietary Components on external servers, CDNs, or secondary hosting platforms.
-* Derivative Transformation: Creation of modified works that substantially replicate the "Look and Feel" (Trade Dress) of the original interface.
-* Commercial Monetization: Any deployment involving programmatic advertising, paywalled access, or the solicitation of donations.
-* Secondary Distribution: Selling, leasing, or assigning the proprietary source code to any third party.
+### V. COVENANTS AND PROHIBITED EXPLOITATIONS
+Any exercise of rights not explicitly enumerated in Section IV is strictly *ultra vires*. The User is perpetually enjoined from:
+* **Unauthorized Replication:** Mirroring or deployment of Proprietary Components on external servers, CDNs, or secondary hosting platforms.
+* **Derivative Transformation:** Creation of modified works that substantially replicate the "Look and Feel" (Trade Dress) of the original interface.
+* **Commercial Monetization:** Any deployment involving programmatic advertising, paywalled access, or the solicitation of donations.
+* **Secondary Distribution:** Selling, leasing, or assigning the proprietary source code to any third party.
 
-VI. VOTING ABUSE AND ANONYMOUS KEY RESTRICTIONS
-The User is strictly prohibited from utilizing anonymous keys, automated bots, scripts, or token-spoofing methods to manipulate, skew, or repeatedly submit data to the monthly game vote. Any attempt to artificially inflate or spam voting results constitutes a material breach of this Agreement, immediately voiding all rights granted herein.
+### VI. VOTING MODIFICATION, ABUSE, AND INTERFACE RESTRICTIONS
+* **Ownership and Origin Restrictions:** The modification, editing, manipulation, or alteration of voting data, vote counts, or voting mechanics is strictly prohibited. No user, licensee, or third party may edit or alter the votes unless they are the explicit repository owner (Licensor) or the action is executed natively through the official authorized website interface.
+* **Anti-Abuse Provisions:** The User is strictly prohibited from utilizing anonymous keys, automated bots, scripts, or token-spoofing methods to manipulate, skew, or repeatedly submit data to the monthly game vote. Any attempt to artificially inflate, spam, or bypass authorized interfaces to alter voting results constitutes a material breach of this Agreement, immediately voiding all rights granted herein.
 
-VII. LIMITATION OF LIABILITY AND "AS-IS" PROVISO
+### VII. LIMITATION OF LIABILITY AND "AS-IS" PROVISO
 TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE PROPRIETARY COMPONENTS ARE PROVIDED "AS IS". The Licensor disclaims all warranties, express or implied. In no event shall the Licensor be liable for any claims, damages, or other liability, whether in an action of contract, tort, or otherwise, arising from or in connection with the software.
 
-VIII. TERMINATION AND ENFORCEMENT
-* Automatic Rescission: Any breach of this Agreement results in the immediate and automatic termination of the license without notice.
-* Legal Recourse: The Licensor reserves the right to seek injunctive relief and pursue statutory damages under the DMCA and international intellectual property treaties.
+### VIII. TERMINATION AND ENFORCEMENT
+* **Automatic Rescission:** Any breach of this Agreement results in the immediate and automatic termination of the license without notice.
+* **Legal Recourse:** The Licensor reserves the right to seek injunctive relief and pursue statutory damages under the DMCA and international intellectual property treaties.
 
-IX. CONTACT INFORMATION
+### IX. CONTACT INFORMATION
 For inquiries regarding permission requests or commercial usage rights, contact the repository owner directly through the GitHub platform.
