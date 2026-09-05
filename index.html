@@ -396,7 +396,7 @@
     <section id="games">
         <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 20px;">
             <h2 style="font-size: 2em; margin: 0;">Game Library</h2>
-            <p id="search-results-count" style="opacity: 0.6; margin: 0;">53 assets loaded</p>
+            <p id="search-results-count" style="opacity: 0.6; margin: 0;">55 assets loaded</p>
         </div>
         <div id="genre-filter-row">
             <button class="genre-btn active" onclick="filterGenre('all')">🎮 All</button>
@@ -634,6 +634,14 @@
             <a href="https://daniezonsfusd.github.io/papas/etp" class="card game-card" data-name="Escaping the Prison - Henry Stickmen" data-genre-arcade="1" onclick="trackRecent(event, 'Escaping the Prison - Henry Stickmen', 'https://daniezonsfusd.github.io/papas/etp')">
                 <span style="font-weight:bold;">Escaping the Prison - Henry Stickmen<span class="badge wip">NEW!</span></span>
                 <button class="fav-btn" onclick="toggleFav(event, 'Escaping the Prison - Henry Stickmen', 'https://daniezonsfusd.github.io/papas/etp')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/papas/ita" class="card game-card" data-name="Infiltrating the Airship - Henry Stickmen" data-genre-arcade="1" onclick="trackRecent(event, 'Infiltrating the Airship - Henry Stickmen', 'https://daniezonsfusd.github.io/papas/ita')">
+                <span style="font-weight:bold;">Infiltrating the Airship - Henry Stickmen<span class="badge wip">NEW!</span></span>
+                <button class="fav-btn" onclick="toggleFav(event, 'Infiltrating the Airship - Henry Stickmen', 'https://daniezonsfusd.github.io/papas/ita')" title="Favorite"><i class="fas fa-star"></i></button>
+            </a>
+            <a href="https://daniezonsfusd.github.io/papas/ftc" class="card game-card" data-name="Fleeing the Complex - Henry Stickmen" data-genre-arcade="1" onclick="trackRecent(event, 'Fleeing the Complex - Henry Stickmen', 'https://daniezonsfusd.github.io/papas/ftc')">
+                <span style="font-weight:bold;">Fleeing the Complex - Henry Stickmen<span class="badge wip">NEW!</span></span>
+                <button class="fav-btn" onclick="toggleFav(event, 'Fleeing the Complex - Henry Stickmen', 'https://daniezonsfusd.github.io/papas/ftc')" title="Favorite"><i class="fas fa-star"></i></button>
             </a>
         </div>
     </section>
@@ -1096,6 +1104,8 @@ For inquiries regarding permission requests or commercial usage rights, contact 
         { name: "Stealing the Diamond - Henry Stickmen", url: "https://daniezonsfusd.github.io/papas/std" },
         { name: "Breaking the Bank - Henry Stickmen", url: "https://daniezonsfusd.github.io/papas/btb" },
         { name: "Escaping The Prison - Henry Stickmen", url: "https://daniezonsfusd.github.io/papas/etp" },
+        { name: "Infiltrating the Airship - Henry Stickmen", url: "https://daniezonsfusd.github.io/papas/ita" },
+        { name: "Fleeing the Complex - Henry Stickmen", url: "https://daniezonsfusd.github.io/papas/ftc" },
     ];
 
     function setupStatusDashboard() {
@@ -1259,7 +1269,9 @@ const milestones = {
         { name: 'DOOM', url: 'https://daniezonsfusd.github.io/webdoom' },
         { name: 'Stealing the Diamond - Henry Stickmen', url: 'https://daniezonsfusd.github.io/papas/std' },
         { name: 'Breaking the Bank - Henry Stickmen', url: 'https://daniezonsfusd.github.io/papas/btb' },
-        { name: 'Escaping the Prison - Henry Stickmen', url: 'https://daniezonsfusd.github.io/papas/etp' },
+        { name: 'Escaping the Prison - Henry Stickmen', url: 'https://daniezonsfusd.github.io/papas/etp' },\
+        { name: 'Infiltrating the Airship - Henry Stickmen', url: 'https://daniezonsfusd.github.io/papas/ita' },
+        { name: 'Fleeing the Complex - Henry Stickmen', url: 'https://daniezonsfusd.github.io/papas/ftc' },
     ];
 
     function renderGOTD() {
