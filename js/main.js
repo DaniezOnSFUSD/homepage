@@ -76,39 +76,9 @@ function checkSystemStatus() {
     });
 }
 
-// --- Global Theme Controls ---
-const themeBtn = document.getElementById('theme-toggle');
-function setTheme(themeName) { 
-    document.body.setAttribute("data-theme", themeName); 
-    localStorage.setItem("site-theme", themeName); 
-    if (themeBtn) themeBtn.className = themeName === 'light' ? 'fas fa-sun' : 'fas fa-moon';
-}
-setTheme(localStorage.getItem("site-theme") || "dark");
-if (themeBtn) {
-    themeBtn.onclick = () => {
-        document.body.getAttribute("data-theme") === "dark" ? setTheme("light") : setTheme("dark");
-    };
-}
-
-// --- Search Utility ---
-const searchInput = document.getElementById('nav-search');
-const gameCards = document.querySelectorAll('.game-card');
-if (searchInput) {
-    searchInput.oninput = (e) => {
-        const queryValue = e.target.value.toLowerCase();
-        let matchedCount = 0;
-        gameCards.forEach(card => {
-            const isMatch = card.textContent.toLowerCase().includes(queryValue);
-            card.style.display = isMatch ? 'flex' : 'none';
-            if (isMatch) matchedCount++;
-        });
-        const resultsCounter = document.getElementById('search-results-count');
-        if (resultsCounter) resultsCounter.innerText = `${matchedCount} assets loaded`;
-    };
-}
-
 // --- Genre Filtering ---
 function filterGenre(genre) {
+    const gameCards = document.querySelectorAll('.game-card');
     gameCards.forEach(card => {
         if (genre === 'all') {
             card.style.display = 'flex';
@@ -219,7 +189,12 @@ function saveCustomStealthPreset() {
     }
 }
 
-// Keyboard shortcuts
+// --- Placeholder voting functions ---
+function submitVote() {
+    console.log('Vote submitted');
+}
+
+// --- Keyboard shortcuts ---
 document.addEventListener('keydown', (e) => {
     const stealthMode = document.getElementById('stealth-mode');
     
@@ -236,7 +211,7 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// Initialize on page load
+// --- Initialize on page load ---
 document.addEventListener('DOMContentLoaded', () => {
     renderTestingGrounds();
     checkSystemStatus();
