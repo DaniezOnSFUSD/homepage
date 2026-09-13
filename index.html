@@ -396,7 +396,7 @@
     <section id="games">
         <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 20px;">
             <h2 style="font-size: 2em; margin: 0;">Game Library</h2>
-            <p id="search-results-count" style="opacity: 0.6; margin: 0;">55 assets loaded</p>
+            <p id="search-results-count" style="opacity: 0.6; margin: 0;">54 assets loaded</p>
         </div>
         <div id="genre-filter-row">
             <button class="genre-btn active" onclick="filterGenre('all')">🎮 All</button>
@@ -418,9 +418,8 @@
                 <span style="font-weight:bold;">Resent Client</span>
                 <button class="fav-btn" onclick="toggleFav(event, 'Resent Client', 'https://daniezonsfusd.github.io/1.8')" title="Favorite"><i class="fas fa-star"></i></button>
             </a>
-            <a href="https://daniezonsfusd.github.io/precisionclient" class="card game-card" data-name="Precision Client (1.8)" data-genre-minecraft="1" onclick="trackRecent(event, 'Precision Client (1.8)', 'https://daniezonsfusd.github.io/precisionclient')">
-                <span style="font-weight:bold;">Precision Client (1.8)</span>
-                <button class="fav-btn" onclick="toggleFav(event, 'Precision Client (1.8)', 'https://daniezonsfusd.github.io/precisionclient')" title="Favorite"><i class="fas fa-star"></i></button>
+            <a href="https://daniezonsfusd.github.io/precisionclient/" class="card game-card broken-game" data-name="precisionclient" data-genre-arcade="1" onclick="trackRecent(event, 'Precision Client 1.8', 'https://daniezonsfusd.github.io/precisionclient')">
+                <span style="font-weight:bold;">Precision Client 1.8</span>
             </a>
             <a href="https://daniezonsfusd.github.io/beeswarm" class="card game-card" data-name="Bee Swarm" data-genre-idle="1" onclick="trackRecent(event, 'Bee Swarm', 'https://daniezonsfusd.github.io/beeswarm')">
                 <span style="font-weight:bold;">Bee Swarm</span>
@@ -438,7 +437,7 @@
                 <span style="font-weight:bold;">GD Wave Challenge</span>
                 <button class="fav-btn" onclick="toggleFav(event, 'GD Wave Challenge', 'https://daniezonsfusd.github.io/multi3/offline/geometryvibes.html')" title="Favorite"><i class="fas fa-star"></i></button>
             </a>
-            <a href="https://daniezonsfusd.github.io/GDNorm" class="card game-card broken-game" data-name="Geometry Dash" data-genre-platformer="1" onclick="trackRecent(event, 'Basket Bros', 'https://daniezonsfusd.github.io/GDNorm')">
+            <a href="https://daniezonsfusd.github.io/GDNorm" class="card game-card broken-game" data-name="Geometry Dash" data-genre-platformer="1" onclick="trackRecent(event, 'GDNorm', 'https://daniezonsfusd.github.io/GDNorm')">
                 <span style="font-weight:bold;">Geometry Dash</span>
             </a>
             <a href="https://daniezonsfusd.github.io/papas/papaspizza" class="card game-card" data-name="Papa's Pizzeria" data-genre-papa="1" onclick="trackRecent(event, 'Papa\'s Pizzeria', 'https://daniezonsfusd.github.io/papas/papaspizza')">
@@ -597,8 +596,9 @@
                 <span style="font-weight:bold;">Kart Bros</span>
                 <button class="fav-btn" onclick="toggleFav(event, 'Kart Bros', 'https://daniezonsfusd.github.io/multi3/offline/kartbros.html')" title="Favorite"><i class="fas fa-star"></i></button>
             </a>
-            <a href="https://daniezonsfusd.github.io/multi3/offline/basketbros.html" class="card game-card broken-game" data-name="Basket Bros" data-genre-arcade="1" onclick="trackRecent(event, 'Basket Bros', 'https://daniezonsfusd.github.io/multi3/offline/basketbros.html')">
+            <a href="https://daniezonsfusd.github.io/multi3/offline/basketbros.html" class="card game-card" data-name="Basket Bros" data-genre-arcade="1" onclick="trackRecent(event, 'Basket Bros', 'https://daniezonsfusd.github.io/multi3/offline/basketbros.html')">
                 <span style="font-weight:bold;">Basket Bros</span>
+                <button class="fav-btn" onclick="toggleFav(event, 'Basket Bros', 'https://daniezonsfusd.github.io/multi3/offline/basketbros.html')" title="Favorite"><i class="fas fa-star"></i></button>
             </a>
             <a href="https://daniezonsfusd.github.io/multi3/offline/backrooms.html" class="card game-card" data-name="Backrooms" data-genre-horror="1" onclick="trackRecent(event, 'Backrooms', 'https://daniezonsfusd.github.io/multi3/offline/backrooms.html')">
                 <span style="font-weight:bold;">Backrooms</span>
@@ -1049,7 +1049,6 @@ For inquiries regarding permission requests or commercial usage rights, contact 
     const gameData = [
         { name: "Eaglercraft 1.20", url: "https://daniezonsfusd.github.io/1.20" },
         { name: "Resent Client 1.8", url: "https://daniezonsfusd.github.io/1.8" },
-        { name: "Precision Client", url: "https://daniezonsfusd.github.io/precisionclient" },
         { name: "Bee Swarm", url: "https://daniezonsfusd.github.io/beeswarm" },
         { name: "GD Lite", url: "https://daniezonsfusd.github.io/Geometrydashlite" },
         { name: "GD Subzero", url: "https://daniezonsfusd.github.io/subzero" },
@@ -1094,7 +1093,7 @@ For inquiries regarding permission requests or commercial usage rights, contact 
         { name: "Granny 2", url: "https://daniezonsfusd.github.io/multi3/offline/granny2.html/", forceOnline: true },
         { name: "Happy Wheels", url: "https://daniezonsfusd.github.io/multi3/offline/happywheels.html/", forceOnline: true },
         { name: "Kart Bros", url: "https://daniezonsfusd.github.io/multi3/offline/kartbros.html/", forceOnline: true },
-        { name: "Basket Bros", url: "https://daniezonsfusd.github.io/multi3/offline/basketbros.html/", forceOnline: true },
+        { name: "Basket Bros (it's back!)", url: "https://daniezonsfusd.github.io/multi3/offline/basketbros.html/", forceOnline: true },
         { name: "Backrooms", url: "https://daniezonsfusd.github.io/multi3/offline/backrooms.html/", forceOnline: true },
         { name: "Burrito Bison", url: "https://daniezonsfusd.github.io/BurritoBison", forceOnline: true },
         { name: "Hole.Io", url: "https://daniezonsfusd.github.io/multi3/offline/holeio.html", forceOnline: true },
@@ -1262,6 +1261,7 @@ const milestones = {
         { name: 'Granny 2',            url: 'https://daniezonsfusd.github.io/multi3/offline/granny2.html' },
         { name: 'Happy Wheels',        url: 'https://daniezonsfusd.github.io/multi3/offline/happywheels.html' },
         { name: 'Kart Bros',           url: 'https://daniezonsfusd.github.io/multi3/offline/kartbros.html' },
+        { name: 'Basket Bros (its back!)',           url: 'https://daniezonsfusd.github.io/multi3/offline/basketbros.html' },
         { name: 'Backrooms',           url: 'https://daniezonsfusd.github.io/multi3/offline/backrooms.html' },
         { name: 'Hole.io',             url: 'https://daniezonsfusd.github.io/multi3/offline/holeio.html' },
         { name: 'Burrito Bison',       url: 'https://daniezonsfusd.github.io/BurritoBison' },
@@ -1387,7 +1387,7 @@ const milestones = {
     const VOTE_WINNER = {
         name: "Fix Basket Bros with 4 Votes!",        // e.g. "Friday Night Funkin"
         month: "August 2026",       // e.g. "June 2026"
-        note: "I'm Working on it!"         // optional extra note, e.g. "Being added next update!"
+        note: "It's Back!"         // optional extra note, e.g. "Being added next update!"
     };
     // ─────────────────────────────────────────────────────────────────────────
 
