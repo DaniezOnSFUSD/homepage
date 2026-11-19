@@ -102,18 +102,18 @@
             background-color: var(--bg-tertiary);
             border: 1px solid var(--border-subtle);
             border-radius: 8px;
-            padding: 10px 14px;
+            padding: 12px 14px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 10px;
-            margin-bottom: 20px;
+            gap: 12px;
+            margin-bottom: 14px;
         }
 
         .url-text {
             color: var(--text-header);
             font-family: 'Consolas', 'Courier New', monospace;
-            font-size: 0.9rem;
+            font-size: 0.92rem;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
@@ -121,49 +121,34 @@
         }
 
         .copy-btn {
-            background-color: var(--bg-primary);
-            color: var(--text-normal);
-            border: 1px solid var(--border-subtle);
+            background-color: var(--blurple);
+            color: #ffffff;
+            border: none;
             border-radius: 6px;
-            padding: 6px 12px;
-            font-size: 0.82rem;
-            font-weight: 600;
+            padding: 8px 16px;
+            font-size: 0.85rem;
+            font-weight: 700;
             cursor: pointer;
-            transition: background-color 0.15s, color 0.15s;
+            transition: background-color 0.15s, transform 0.1s;
             flex-shrink: 0;
         }
 
         .copy-btn:hover {
-            background-color: #3f4248;
-            color: #fff;
+            background-color: var(--blurple-hover);
+        }
+
+        .copy-btn:active {
+            transform: scale(0.98);
         }
 
         .copy-btn.copied {
             background-color: var(--green);
-            color: #fff;
-            border-color: var(--green);
         }
 
-        .cta-btn {
-            display: block;
-            width: 100%;
-            background-color: var(--blurple);
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1rem;
-            padding: 14px 24px;
-            border-radius: 8px;
-            transition: background-color 0.15s, transform 0.1s;
+        .helper-text {
+            font-size: 0.83rem;
+            color: var(--text-muted);
             margin-bottom: 24px;
-        }
-
-        .cta-btn:hover {
-            background-color: var(--blurple-hover);
-        }
-
-        .cta-btn:active {
-            transform: scale(0.99);
         }
 
         .divider {
@@ -194,7 +179,7 @@
         <h1>Goodbye <span style="text-decoration: line-through; opacity: 0.65;">DaniezOnSFUSD</span><br>Hello <span class="highlight">DaniezDev</span>!</h1>
 
         <p class="subtitle">
-            Thanks for visiting the old archive! All games, stealth mode presets, and future updates have officially moved to the new <strong>DaniezDev</strong> organization homepage. Copy the link below and paste it into your browser or bookmarks.
+            Thanks for visiting the old archive! All games, stealth mode presets, and future updates have officially moved to the new <strong>DaniezDev</strong> organization homepage.
         </p>
 
         <div class="url-box">
@@ -202,9 +187,9 @@
             <button class="copy-btn" id="copyBtn" onclick="copyLink()">Copy Link</button>
         </div>
 
-        <a href="https://github.io" class="cta-btn">
-            Open DaniezDev Homepage →
-        </a>
+        <p class="helper-text">
+            Copy the link above and paste it into a new browser tab or your bookmarks.
+        </p>
 
         <div class="divider"></div>
 
