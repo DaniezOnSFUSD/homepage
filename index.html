@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DaniezOnSFUSD → DaniezDev | We Moved!</title>
+    <style>
+        :root {
+            --bg-tertiary: #1e1f22;
+            --bg-secondary: #2b2d31;
+            --bg-primary: #313338;
+            --blurple: #5865F2;
+            --blurple-hover: #4752C4;
+            --green: #23a55a;
+            --yellow: #f0b232;
+            --text-normal: #dbdee1;
+            --text-muted: #949ba4;
+            --text-header: #f2f3f5;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'gg sans', 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-tertiary);
+            color: var(--text-normal);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background-image: radial-gradient(circle at top, #27293d 0%, var(--bg-tertiary) 60%);
+        }
+
+        .card {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            max-width: 560px;
+            width: 100%;
+            padding: 36px 32px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--bg-tertiary);
+            border: 1px solid var(--border-subtle);
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--yellow);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--yellow);
+        }
+
+        h1 {
+            color: var(--text-header);
+            font-size: 1.85rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .highlight {
+            color: var(--blurple);
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 0.98rem;
+            line-height: 1.55;
+            margin-bottom: 28px;
+        }
+
+        .url-box {
+            background-color: var(--bg-tertiary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            padding: 10px 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .url-text {
+            color: var(--text-header);
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            user-select: all;
+        }
+
+        .copy-btn {
+            background-color: var(--bg-primary);
+            color: var(--text-normal);
+            border: 1px solid var(--border-subtle);
+            border-radius: 6px;
+            padding: 6px 12px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.15s, color 0.15s;
+            flex-shrink: 0;
+        }
+
+        .copy-btn:hover {
+            background-color: #3f4248;
+            color: #fff;
+        }
+
+        .copy-btn.copied {
+            background-color: var(--green);
+            color: #fff;
+            border-color: var(--green);
+        }
+
+        .cta-btn {
+            display: block;
+            width: 100%;
+            background-color: var(--blurple);
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 14px 24px;
+            border-radius: 8px;
+            transition: background-color 0.15s, transform 0.1s;
+            margin-bottom: 24px;
+        }
+
+        .cta-btn:hover {
+            background-color: var(--blurple-hover);
+        }
+
+        .cta-btn:active {
+            transform: scale(0.99);
+        }
+
+        .divider {
+            height: 1px;
+            background-color: var(--border-subtle);
+            margin-bottom: 18px;
+        }
+
+        .footer {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .footer strong {
+            color: var(--text-normal);
+        }
+    </style>
+</head>
+<body>
+
+    <main class="card">
+        <div class="status-pill">
+            <span class="status-dot"></span>
+            Repository Migration Notice
+        </div>
+
+        <h1>Goodbye <span style="text-decoration: line-through; opacity: 0.65;">DaniezOnSFUSD</span><br>Hello <span class="highlight">DaniezDev</span>!</h1>
+
+        <p class="subtitle">
+            Thanks for visiting the old archive! All games, stealth mode presets, and future updates have officially moved to the new <strong>DaniezDev</strong> organization homepage. Copy the link below and paste it into your browser or bookmarks.
+        </p>
+
+        <div class="url-box">
+            <span class="url-text" id="newUrl">https://github.io</span>
+            <button class="copy-btn" id="copyBtn" onclick="copyLink()">Copy Link</button>
+        </div>
+
+        <a href="https://github.io" class="cta-btn">
+            Open DaniezDev Homepage →
+        </a>
+
+        <div class="divider"></div>
+
+        <footer class="footer">
+            <strong>© 2025–2026 DaniezDev.</strong> All Rights Reserved.<br>
+            Made by a student, for students. Not affiliated with SFUSD.
+        </footer>
+    </main>
+
+    <script>
+        const targetUrl = "https://github.io";
+
+        function copyLink() {
+            const btn = document.getElementById("copyBtn");
+            navigator.clipboard.writeText(targetUrl).then(() => {
+                btn.textContent = "Copied!";
+                btn.classList.add("copied");
+                setTimeout(() => {
+                    btn.textContent = "Copy Link";
+                    btn.classList.remove("copied");
+                }, 2000);
+            });
+        }
+    </script>
+
+</body>
+</html>
